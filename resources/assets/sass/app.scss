@@ -1,0 +1,77 @@
+
+// Fonts
+// @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+
+// Variables
+//@import "variables";
+// Bootstrap
+//@import '~bootstrap/scss/bootstrap';
+
+// select2
+//@import '~select2/src/scss/core';
+
+// Sweet alert2
+@import '~sweetalert2/src/sweetalert2.scss';
+
+// Toast
+@import "~toastr/toastr.scss";
+
+@import "~tiny-date-picker/tiny-date-picker.min.css";
+@import "~tiny-date-picker/date-range-picker.css";
+
+.ex-inputs {
+  position: relative;
+}
+
+.ex-inputs-calification {
+  position: relative;
+}
+
+.ex-inputs-start,
+.ex-inputs-end {
+  padding: 8px;
+  font-size: 1em;
+  border: 1px solid #CCC;
+  border-radius: 2px;
+}
+
+.ex-inputs-start:focus,
+.ex-inputs-end:focus {
+  border-color: #46A5F5;
+}
+
+.ex-inputs-picker {
+  position: absolute;
+  z-index: 1000;
+  left: 50%;
+  top: calc(100% + 8px);
+  opacity: 0;
+  z-index: -20;
+  transform: translateX(-50%);
+  transition: all 0.25s;
+}
+
+.ex-inputs-calification-picker {
+  position: absolute;
+  z-index: 1000;
+  left: 50%;
+  top: calc(100% + 8px);
+  opacity: 0;
+  z-index: -20;
+  transform: translateX(-50%);
+  transition: all 0.25s;
+}
+
+.ex-inputs-picker-visible {
+  opacity: 1;
+  z-index: 1000;
+}
+
+@media (max-width: 616px), (max-height: 480px) {
+  .ex-inputs-start,
+  .ex-inputs-end {
+    width: 100%;
+  }
+}
+
+@import "./custom";
