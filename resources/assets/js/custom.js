@@ -38,7 +38,6 @@ window.notification = (type, message) => {
 
 module.exports = delete_action = (e) => {
     e.preventDefault();
-
     Swal.fire({
         title: 'Estas seguro!',
         text: 'Estas seguro de eliminar este registro ?',

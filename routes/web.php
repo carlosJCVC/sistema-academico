@@ -748,4 +748,34 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.', '
         'as' => 'schedules.destroy',
         'uses' => 'ScheduleController@destroy',
     ]);
+
+    //------------ ASIGNATURES --------------//
+    Route::get('asignatures', [
+        'as' => 'asignatures.index',
+        'uses' => 'AsignatureController@index',
+    ]);
+    Route::get('asignatures/create', [
+        'as' => 'asignatures.create',
+        'uses' => 'AsignatureController@create',
+    ]);
+    Route::post('asignatures/store', [
+        'as' => 'asignatures.store',
+        'uses' => 'AsignatureController@store',
+    ]);
+    Route::get('asignatures/{asignature}/edit', [
+        'as' => 'asignatures.edit',
+        'uses' => 'AsignatureController@edit',
+    ]);
+    Route::put('asignatures/{asignature}', [
+        'as' => 'asignatures.update',
+        'uses' => 'AsignatureController@update',
+    ]);
+    Route::patch('asignatures/{asignature}', [
+        'as' => 'asignatures.update',
+        'uses' => 'AsignatureController@update',
+    ]);
+    Route::delete('asignatures/{Asignature}', [
+        'as' => 'asignatures.destroy',
+        'uses' => 'AsignatureController@destroy',
+    ]);
 });
