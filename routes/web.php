@@ -774,8 +774,38 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.', '
         'as' => 'asignatures.update',
         'uses' => 'AsignatureController@update',
     ]);
-    Route::delete('asignatures/{Asignature}', [
+    Route::delete('asignatures/{asignature}', [
         'as' => 'asignatures.destroy',
         'uses' => 'AsignatureController@destroy',
+    ]);
+
+    //------------ ASIGNATURE' GROUP --------------//
+    Route::get('asignature-group', [
+        'as' => 'asignature-group.index',
+        'uses' => 'AsignatureGroupController@index',
+    ]);
+    Route::get('asignature-group/create', [
+        'as' => 'asignature-group.create',
+        'uses' => 'AsignatureGroupController@create',
+    ]);
+    Route::post('asignature-group/store', [
+        'as' => 'asignature-group.store',
+        'uses' => 'AsignatureGroupController@store',
+    ]);
+    Route::get('asignature-group/{id}/edit', [
+        'as' => 'asignature-group.edit',
+        'uses' => 'AsignatureGroupController@edit',
+    ]);
+    Route::put('asignature-group/{id}', [
+        'as' => 'asignature-group.update',
+        'uses' => 'AsignatureGroupController@update',
+    ]);
+    Route::patch('asignature-group/{id}', [
+        'as' => 'asignature-group.update',
+        'uses' => 'AsignatureGroupController@update',
+    ]);
+    Route::delete('asignature-group/{id}', [
+        'as' => 'asignature-group.destroy',
+        'uses' => 'AsignatureGroupController@destroy',
     ]);
 });
