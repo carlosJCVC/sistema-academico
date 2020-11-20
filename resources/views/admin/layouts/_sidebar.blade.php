@@ -98,6 +98,27 @@
                 </ul>
             </li>
 
+            <li class="nav-item nav-dropdown">
+                <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-docs"></i> Informes</a>
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item nav-dropdown">
+                        <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-doc"></i> Asistencia y Avance</a>
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.asistencia-avance.index') }}"><i class="icon-list"></i> Lista</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.asistencia-avance.create') }}"><i class="icon-plus"></i> Nuevo</a>
+                            </li>
+                        </ul>
+                    </li>
+                    {{-- <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="icon-chart"></i> Nuevo</a>
+                    </li> --}}
+                </ul>
+            </li>
+
+
             <!-- <li class="nav-item nav-dropdown">
                 <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-pie-chart"></i> Items</a>
                 <ul class="nav-dropdown-items">

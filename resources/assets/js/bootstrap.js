@@ -1,6 +1,6 @@
 
 window._ = require('lodash');
-window.FilePond = require('filepond');
+// window.FilePond = require('filepond');
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -11,8 +11,8 @@ window.FilePond = require('filepond');
 try {
     window.$ = window.jQuery = require('jquery');
 
-//    require('bootstrap-sass');
-} catch (e) {}
+    //    require('bootstrap-sass');
+} catch (e) { }
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

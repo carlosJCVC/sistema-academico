@@ -13,12 +13,12 @@
 
 Auth::routes();
 
- Route::get('/', [
-     'as' => 'home',
-     'uses' => 'HomeController@index'
- ]);
+Route::get('/', [
+    'as' => 'home',
+    'uses' => 'HomeController@index'
+]);
 
- /*
+/*
 Route::get('/', function() {
     return View('auth.login');
 })->name('loginn');
@@ -88,7 +88,7 @@ Route::get('avisos/{aviso}', [
 ]);
 
 ////////////////////// ADMIN ROUTES ///////////////////
-Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.', 'namespace' => 'Admin'], function() {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.', 'namespace' => 'Admin'], function () {
     Route::get('dashboard', [
         'as' => 'dashboard',
         'uses' => 'HomeController@index'
@@ -206,7 +206,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.', '
         'as' => 'resannoun.store',
         'uses' => 'AnnouncementController@publishStore',
     ])->middleware('permission:create publishes');
-        
+
 
     //------------ Postulants --------------//
     Route::get('{announcement}/postulants', [
@@ -245,7 +245,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.', '
         'as' => 'postulants.destroy',
         'uses' => 'PostulantController@destroy',
     ])->middleware('permission:delete postulants');
-    
+
     Route::get('{announcement}/postulants/{postulant}/calificate', [
         'as' => 'postulants.calificate',
         'uses' => 'PostulantController@calificate'
@@ -808,4 +808,41 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.', '
         'as' => 'asignature-group.destroy',
         'uses' => 'AsignatureGroupController@destroy',
     ]);
+
+
+    Route::group(['namespace' => 'Report'], function () {
+        //------------ REPORT - ASISTENCIA Y AVANCE --------------//
+        Route::get('reports/asistencia-avance', [
+            'as' => 'asistencia-avance.index',
+            'uses' => 'AsistenciaController@index',
+        ]);
+        Route::get('reports/asistencia-avance/create', [
+            'as' => 'asistencia-avance.create',
+            'uses' => 'AsistenciaController@create',
+        ]);
+        Route::get('reports/asistencia-avance/precreate', [
+            'as' => 'asistencia-avance.precreate',
+            'uses' => 'AsistenciaController@preData',
+        ]);
+        Route::post('reports/asistencia-avance/store', [
+            'as' => 'asistencia-avance.store',
+            'uses' => 'AsistenciaController@store',
+        ]);
+        Route::get('reports/asistencia-avance/{id}/edit', [
+            'as' => 'asistencia-avance.edit',
+            'uses' => 'AsistenciaController@edit',
+        ]);
+        Route::put('reports/asistencia-avance/{id}', [
+            'as' => 'asistencia-avance.update',
+            'uses' => 'AsistenciaController@update',
+        ]);
+        Route::patch('reports/asistencia-avance/{id}', [
+            'as' => 'asistencia-avance.update',
+            'uses' => 'AsistenciaController@update',
+        ]);
+        Route::delete('reports/asistencia-avance/{id}', [
+            'as' => 'asistencia-avance.destroy',
+            'uses' => 'AsistenciaController@destroy',
+        ]);
+    });
 });

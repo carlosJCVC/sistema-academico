@@ -18,7 +18,7 @@ class CreateAsignatureGroupsTable extends Migration
             $table->string('group');
             $table->integer('asignature_id')->unsigned();
             $table->foreign('asignature_id')->references('id')->on('asignatures')->onDelete('cascade');
-            
+
             $table->timestamps();
         });
 
@@ -26,14 +26,14 @@ class CreateAsignatureGroupsTable extends Migration
             $table->increments('id');
             $table->integer('group_id')->unsigned();
             $table->foreign('group_id')->references('id')->on('asignature_groups')->onDelete('cascade');
-            
+
             $table->integer('teacher')->unsigned();
             $table->foreign('teacher')->references('id')->on('users')->onDelete('cascade');
             $table->boolean('titular')->default(true);
             $table->string('from');
             $table->string('to');
             $table->string('day');
-            
+
             $table->timestamps();
         });
     }

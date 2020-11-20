@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'lastname','lastnamemother','phone', 'gender', 'ci', 'cod_sis', 'email','direction','name_matter', 'password', 'status',
+        'name', 'lastname', 'lastnamemother', 'phone', 'gender', 'ci', 'cod_sis', 'email', 'direction', 'name_matter', 'password', 'status',
     ];
 
     /**
@@ -56,11 +56,10 @@ class User extends Authenticatable
 
     public function checkPermission($permission)
     {
-        if(!Gate::check($permission))
+        if (!Gate::check($permission))
             return false;
         else
             return true;
-
     }
 
     public function checkPermissions($type = 'or',  $permissions)
@@ -96,5 +95,30 @@ class User extends Authenticatable
         }
 
         return $res;
+    }
+
+    public function schedules()
+    {
+        return $this->hasMany('App\Models\AsignatureGroupTeacher', 'teacher');
+    }
+
+    public function getAsignaturesAndGroups()
+    {
+        $schedules = $this->schedules()->get();
+
+        $groups = $schedules->map(function ($schedule) {
+            return $schedule->group;
+        });
+
+        $asignatures = $groups->map(function ($group) {
+            return $group->asignature;
+        });
+
+        $out = [
+            'asignatures' => $asignatures->makeHidden(['created_at', 'updated_at'])->toArray(),
+            'groups' => $groups->makeHidden(['created_at', 'updated_at', 'asignature'])->toArray(),
+            'schedules' => $schedules->makeHidden(['created_at', 'updated_at', 'group'])->toArray()
+        ];
+        return $out;
     }
 }

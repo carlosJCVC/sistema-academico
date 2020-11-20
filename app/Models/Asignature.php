@@ -25,4 +25,9 @@ class Asignature extends Model
     {
         return "{$this->number}/{$this->year}";
     }
+
+    public function groups()
+    {
+        return $this->hasMany('App\Models\AsignatureGroup');
+    }
 }
