@@ -875,4 +875,34 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.', '
         'as' => 'classes-reposiciones.destroy',
         'uses' => 'ClassroomController@destroy',
     ]);
+
+    //------------ JUSTIFICACIONES DE AUSENCIAS --------------//
+    Route::get('absences', [
+        'as' => 'absences.index',
+        'uses' => 'AbsencesController@index',
+    ]);
+    Route::get('absences/create', [
+        'as' => 'absences.create',
+        'uses' => 'AbsencesController@create',
+    ]);
+    Route::post('absences/store', [
+        'as' => 'absences.store',
+        'uses' => 'AbsencesController@store',
+    ]);
+    Route::get('absences/{id}/edit', [
+        'as' => 'absences.edit',
+        'uses' => 'AbsencesController@edit',
+    ]);
+    Route::put('absences/{id}', [
+        'as' => 'absences.update',
+        'uses' => 'AbsencesController@update',
+    ]);
+    Route::patch('absences/{id}', [
+        'as' => 'absences.update',
+        'uses' => 'AbsencesController@update',
+    ]);
+    Route::delete('absences/{id}', [
+        'as' => 'absences.destroy',
+        'uses' => 'AbsencesController@destroy',
+    ]);
 });

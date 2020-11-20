@@ -35,7 +35,7 @@ class ClassroomController extends Controller
         $classe = new Classroom($input);
         $classe->save();
         return redirect(route('admin.classes-reposiciones.index'))
-            ->with(['message' => 'Clade de reposicion creada exitosamente!', 'alert-type' => 'success']);
+            ->with(['message' => 'Clase de reposicion creada exitosamente!', 'alert-type' => 'success']);
     }
 
     public function edit($id)

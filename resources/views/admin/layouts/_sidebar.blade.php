@@ -130,6 +130,18 @@
                 </ul>
             </li>
 
+            <li class="nav-item nav-dropdown">
+                <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-pie-chart"></i> Justificaciones</a>
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.absences.index') }}"><i class="icon-chart"></i> Lista</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.absences.create') }}"><i class="icon-chart"></i> Nuevo</a>
+                    </li>
+                </ul>
+            </li>
+
             <!-- <li class="nav-item nav-dropdown">
                 <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-pie-chart"></i> Items</a>
                 <ul class="nav-dropdown-items">
