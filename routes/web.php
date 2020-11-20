@@ -845,4 +845,34 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.', '
             'uses' => 'AsistenciaController@destroy',
         ]);
     });
+
+    //------------ REPOSICIONES DE CLASES --------------//
+    Route::get('classes-reposiciones', [
+        'as' => 'classes-reposiciones.index',
+        'uses' => 'ClassroomController@index',
+    ]);
+    Route::get('classes-reposiciones/create', [
+        'as' => 'classes-reposiciones.create',
+        'uses' => 'ClassroomController@create',
+    ]);
+    Route::post('classes-reposiciones/store', [
+        'as' => 'classes-reposiciones.store',
+        'uses' => 'ClassroomController@store',
+    ]);
+    Route::get('classes-reposiciones/{id}/edit', [
+        'as' => 'classes-reposiciones.edit',
+        'uses' => 'ClassroomController@edit',
+    ]);
+    Route::put('classes-reposiciones/{id}', [
+        'as' => 'classes-reposiciones.update',
+        'uses' => 'ClassroomController@update',
+    ]);
+    Route::patch('classes-reposiciones/{id}', [
+        'as' => 'classes-reposiciones.update',
+        'uses' => 'ClassroomController@update',
+    ]);
+    Route::delete('classes-reposiciones/{id}', [
+        'as' => 'classes-reposiciones.destroy',
+        'uses' => 'ClassroomController@destroy',
+    ]);
 });
