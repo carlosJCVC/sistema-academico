@@ -7,7 +7,7 @@ Justificaciones
 
 @section('content')
 
-    <div class="card">
+    <div class="card mt-3">
         <div class="card-header">
             <i class="fa fa-align-justify"></i> Justificaciones
             <a class="btn btn-secondary" href="{{ route('admin.absences.create') }}">

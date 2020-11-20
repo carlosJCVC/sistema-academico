@@ -68,18 +68,14 @@
             <span class="input-group-append">
                 <button class="btn btn-primary" type="button" disabled>G</button>
             </span>
-            <select class="select2" name="group" id="group">
+            <select class="select2 {{ $errors->has('group') ? 'is-invalid' : '' }}" name="group" id="group">
+                <option></option>
                 @foreach ($groups as $group)
                     <option value="{{ $group->id }}" {{ (isset($report) && $report->group == $group->id) ? 'selected' : '' }}>
-                        {{ $group->name}}
+                        {{ $group->group}}
                     </option>
                 @endforeach
             </select>
-            {{-- <input
-                class="form-control {{ $errors->has('group') ? 'is-invalid' : '' }}"
-                name="group"
-                readonly
-                placeholder="Ingrese grupo de materia" type="text"  value="{{ old('group', isset($report) ? $report->group : '') }}"> --}}
         </div>
 
         <div class="invalid-feedback {{ $errors->has('group')? 'd-block' : '' }}">
@@ -87,9 +83,6 @@
         </div>
     </div>
 </div>
-
-
-<div class="form-row"></div>
 
 <div class="form-row">
 
@@ -216,7 +209,7 @@
             {{ $errors->has('file')? $errors->first('file') : 'El campo es requerido' }}
         </div>
     </div>
-
+{{-- 
     @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -225,7 +218,7 @@
             @endforeach
         </ul>
     </div>
-    @endif
+    @endif --}}
 
 </div>
 

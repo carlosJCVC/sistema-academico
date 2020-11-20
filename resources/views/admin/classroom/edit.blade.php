@@ -22,7 +22,7 @@
 @section('content')
 
     <div class="animated fadeIn">
-        <div class="row">
+        <div class="row  mt-3">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">

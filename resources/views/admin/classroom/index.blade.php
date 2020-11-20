@@ -7,7 +7,7 @@ Clases de reposicion
 
 @section('content')
 
-    <div class="card">
+    <div class="card mt-3">
         <div class="card-header">
             <i class="fa fa-align-justify"></i> Clases de reposicion
             <a class="btn btn-secondary" href="{{ route('admin.classes-reposiciones.create') }}">

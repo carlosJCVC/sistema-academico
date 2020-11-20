@@ -7,7 +7,7 @@ Asistencia y Avance
 
 @section('content')
 
-    <div class="card">
+    <div class="card mt-3">
         <div class="card-header">
             <i class="fa fa-align-justify"></i> Asistencia y Avance
             <a class="btn btn-secondary" href="{{ route('admin.asistencia-avance.create') }}">

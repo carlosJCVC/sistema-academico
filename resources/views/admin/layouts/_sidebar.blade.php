@@ -54,10 +54,10 @@
                 <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-pie-chart"></i> Horarios</a>
                 <ul class="nav-dropdown-items">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.schedules.index') }}"><i class="icon-chart"></i> Lista</a>
+                        <a class="nav-link" href="{{ route('admin.schedules.index') }}"><i class="icon-list"></i> Lista</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.schedules.create') }}"><i class="icon-chart"></i> Nuevo</a>
+                        <a class="nav-link" href="{{ route('admin.schedules.create') }}"><i class="icon-plus"></i> Nuevo</a>
                     </li>
                 </ul>
             </li>
@@ -66,10 +66,10 @@
                 <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-pie-chart"></i> Ud. Académicas</a>
                 <ul class="nav-dropdown-items">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.academics.index') }}"><i class="icon-chart"></i> Lista</a>
+                        <a class="nav-link" href="{{ route('admin.academics.index') }}"><i class="icon-list"></i> Lista</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.academics.create') }}"><i class="icon-chart"></i> Nuevo</a>
+                        <a class="nav-link" href="{{ route('admin.academics.create') }}"><i class="icon-plus"></i> Nuevo</a>
                     </li>
                 </ul>
             </li>
@@ -78,10 +78,10 @@
                 <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-pie-chart"></i> Materias</a>
                 <ul class="nav-dropdown-items">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.asignatures.index') }}"><i class="icon-chart"></i> Lista</a>
+                        <a class="nav-link" href="{{ route('admin.asignatures.index') }}"><i class="icon-list"></i> Lista</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.asignatures.create') }}"><i class="icon-chart"></i> Nuevo</a>
+                        <a class="nav-link" href="{{ route('admin.asignatures.create') }}"><i class="icon-plus"></i> Nuevo</a>
                     </li>
                 </ul>
             </li>
@@ -90,10 +90,10 @@
                 <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-pie-chart"></i> Grupos</a>
                 <ul class="nav-dropdown-items">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.asignature-group.index') }}"><i class="icon-chart"></i> Lista</a>
+                        <a class="nav-link" href="{{ route('admin.asignature-group.index') }}"><i class="icon-list"></i> Lista</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.asignature-group.create') }}"><i class="icon-chart"></i> Nuevo</a>
+                        <a class="nav-link" href="{{ route('admin.asignature-group.create') }}"><i class="icon-plus"></i> Nuevo</a>
                     </li>
                 </ul>
             </li>
@@ -122,10 +122,10 @@
                 <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-pie-chart"></i> Reposiciones</a>
                 <ul class="nav-dropdown-items">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.classes-reposiciones.index') }}"><i class="icon-chart"></i> Lista</a>
+                        <a class="nav-link" href="{{ route('admin.classes-reposiciones.index') }}"><i class="icon-list"></i> Lista</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.classes-reposiciones.create') }}"><i class="icon-chart"></i> Nuevo</a>
+                        <a class="nav-link" href="{{ route('admin.classes-reposiciones.create') }}"><i class="icon-plus"></i> Nuevo</a>
                     </li>
                 </ul>
             </li>
@@ -134,10 +134,10 @@
                 <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-pie-chart"></i> Justificaciones</a>
                 <ul class="nav-dropdown-items">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.absences.index') }}"><i class="icon-chart"></i> Lista</a>
+                        <a class="nav-link" href="{{ route('admin.absences.index') }}"><i class="icon-list"></i> Lista</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.absences.create') }}"><i class="icon-chart"></i> Nuevo</a>
+                        <a class="nav-link" href="{{ route('admin.absences.create') }}"><i class="icon-plus"></i> Nuevo</a>
                     </li>
                 </ul>
             </li>
