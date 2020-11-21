@@ -21,8 +21,11 @@ class CreateWeekReportsTable extends Migration
             $table->date('date');
             $table->text('bodyclass');
             $table->text('resourcesbody');
-            $table->text('observations');
-            $table->text('file')->nullable();
+            $table->text('observations')->nullable();
+            // optional fields
+            $table->boolean('has_file')->default(false);
+            $table->text('filename')->nullable();
+            $table->text('file_path')->nullable();
             $table->timestamps();
         });
     }

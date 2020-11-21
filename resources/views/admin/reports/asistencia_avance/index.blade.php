@@ -39,6 +39,11 @@ Asistencia y Avance
                         <td>{{ $report->resourcesbody }}</td>
                         <td>{{ $report->observations }}</td>
                         <td>
+                            @if($report->has_file)
+                                <a class="btn btn-link btn-sm" href="{{ $report->getUrlFile() }}" download="{{ $report->filename }}">
+                                    <i class="icon-doc"></i>
+                                </a>&nbsp;
+                            @endif
                             <a class="btn btn-warning btn-sm" href="{{ route('admin.asistencia-avance.edit', [ 'id' => $report->id]) }}">
                                 <i class="icon-pencil"></i>
                             </a> &nbsp;

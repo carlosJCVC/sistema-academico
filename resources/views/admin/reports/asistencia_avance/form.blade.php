@@ -197,29 +197,33 @@
     </div>
 
     <div class="col-md-12 mb-3">
-        <label class="col-form-label" for="file">Archivo (opcional): </label>
+        <label class="col-form-label">Archivo (opcional): </label>
         <div class="input-group">
             <span class="input-group-append">
                 <button class="btn btn-primary" type="button">FILE</button>
             </span>
-            <input type="file" class="form-control {{ $errors->has('file') ? 'is-invalid' : '' }}" name="file">
+            <label for="file" class="btn border" style="cursor: pointer;">
+                <i class="fa fa-cloud-upload"></i>&nbsp;Seleccionar documento
+            </label>
+            <label id="filename" class="btn btn-block border">
+                @if(isset($report) && $report->has_file)
+                <strong>{{ $report->filename }}</strong>
+                @else
+                <strong class="text-capitalize">no hay documento</strong>
+                @endif
+            </label>
+            <input 
+                type="file"
+                id="file"
+                class="form-control {{ $errors->has('file') ? 'is-invalid' : '' }}"
+                style="display: none"
+                name="file">
         </div>
 
         <div class="invalid-feedback {{ $errors->has('file')? 'd-block' : '' }}">
             {{ $errors->has('file')? $errors->first('file') : 'El campo es requerido' }}
         </div>
     </div>
-{{-- 
-    @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif --}}
-
 </div>
 
 <script>
@@ -245,5 +249,9 @@
             close: 'Cerrar',
         },
         mode: 'dp-below',
+    });
+
+    $("#file").change(function(){
+        $("#filename strong").text(this.files[0].name);
     });
 </script>

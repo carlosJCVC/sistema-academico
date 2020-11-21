@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 
 class WeekReport extends Model
@@ -17,11 +18,17 @@ class WeekReport extends Model
         'bodyclass',
         'resourcesbody',
         'observations',
-        'file'
+        'has_file',
+        'filename',
+        'file_path',
     ];
 
     protected $dates = [
         'date'
+    ];
+
+    protected $casts = [
+        'has_file' => 'boolean',
     ];
 
     public function formatDate()
@@ -57,5 +64,16 @@ class WeekReport extends Model
         $to = $schedule->to;
         $day = $schedule->day;
         return "{$from}-{$to} / {$day}";
+    }
+
+    public function getUrlFile()
+    {
+        return Storage::url($this->file_path);
+    }
+
+    public function removeInstanceFile()
+    {
+        // Storage::delete($this->file_path);
+        Storage::disk('public')->delete($this->file_path);
     }
 }

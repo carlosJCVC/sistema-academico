@@ -30,7 +30,7 @@
                     <div class="card-header">
                         <i class="fa fa-edit"></i>Editar Informe Asistencia y Avance</div>
                     <div class="card-body">
-                        <form class="form-horizontal" action="{{ route('admin.asistencia-avance.update', [ 'id' => $report->id]) }}" method="POST">
+                        <form class="form-horizontal" action="{{ route('admin.asistencia-avance.update', [ 'id' => $report->id]) }}" method="POST" enctype="multipart/form-data">
                             {{ method_field('PUT')}}
                             {{ csrf_field() }}
 

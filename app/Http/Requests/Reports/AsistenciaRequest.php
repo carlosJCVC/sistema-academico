@@ -40,6 +40,7 @@ class AsistenciaRequest extends FormRequest
                         'bodyclass' => 'required',
                         'resourcesbody' => 'required',
                         'observations' => 'nullable|max:150',
+                        'file' => 'nullable|file|mimes:pdf,txt|max:2048',
                     ];
                 }
             case 'PUT':
@@ -55,6 +56,7 @@ class AsistenciaRequest extends FormRequest
                         'bodyclass' => 'required',
                         'resourcesbody' => 'required',
                         'observations' => 'nullable|max:150',
+                        'file' => 'nullable|file|mimes:pdf,txt|max:2048',
                     ];
                 }
             default:
@@ -81,6 +83,9 @@ class AsistenciaRequest extends FormRequest
             'observations.max' => 'El campo :attribute no debe ser mayor a 150 caracteres.',
             'user.exists' => 'El campo :attribute debe ser valido y estar presente en el sistema.',
             'asignature.exists' => 'El campo :attribute debe ser valido y estar presente en el sistema.',
+            'file.file' => 'El campo :attribute debe ser un archivo valido.',
+            'file.mimes' => 'El campo :attribute debe ser un archivo valido y ser :values.',
+            'file.max' => 'El campo :attribute debe ser un archivo no mayor a :max kilobytes.',
         ];
     }
 
@@ -97,6 +102,7 @@ class AsistenciaRequest extends FormRequest
             'bodyclass' => 'contenido de clase',
             'resourcesbody' => 'medios/plataforma',
             'observations' => 'observaciones',
+            'file' => 'archivo opcional',
         ];
     }
 }

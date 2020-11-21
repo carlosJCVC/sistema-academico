@@ -47,6 +47,13 @@ class AsistenciaController extends Controller
     {
         $input = $request->all();
         $report = new WeekReport($input);
+
+        if ($request->hasFile('file') && $request->file('file')->isValid()) {
+            $report->file_path = $request->file('file')->store('documents', 'public');
+            $report->filename  = $request->file->getClientOriginalName();
+            $report->has_file  = true;
+        }
+
         $report->save();
         return redirect(route('admin.asistencia-avance.index'))
             ->with(['message' => 'Reporte creado exitosamente!', 'alert-type' => 'success']);
@@ -55,7 +62,6 @@ class AsistenciaController extends Controller
     public function edit($id)
     {
         $report = WeekReport::findOrFail($id);
-        // dd($report);
         $users = User::all();
         $asignatures = Asignature::all();
         $groups = AsignatureGroup::all();
@@ -71,8 +77,15 @@ class AsistenciaController extends Controller
     {
         $input = $request->all();
         $report = WeekReport::findOrFail($id);
-        $report->update($input);
+        $report->fill($input);
 
+        if ($request->hasFile('file') && $request->file('file')->isValid()) {
+            $report->file_path = $request->file('file')->store('documents', 'public');
+            $report->filename  = $request->file->getClientOriginalName();
+            $report->has_file  = true;
+        }
+
+        $report->save();
         return redirect()
             ->route('admin.asistencia-avance.index')
             ->with(['message' => 'Reporte actualizado exitosamente!', 'alert-type' => 'success']);
@@ -81,8 +94,12 @@ class AsistenciaController extends Controller
     public function destroy($id)
     {
         $report = WeekReport::findOrFail($id);
+
+        if ($report->has_file) {
+            $report->removeInstanceFile();
+        }
+
         $report->delete();
-        // still delete the file if has
         return redirect()
             ->route('admin.asistencia-avance.index')
             ->with(['message' => 'Reporte eliminado exitosamente!', 'alert-type' => 'success']);
