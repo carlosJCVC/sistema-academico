@@ -20,7 +20,7 @@
                 <tr>
                     <th>De</th>
                     <th>A</th>
-                    <th>Dia</th>
+                    {{-- <th>Dia</th> --}}
                     <th>Opciones</th>
                 </tr>
                 </thead>
@@ -29,7 +29,7 @@
                     <tr>
                         <td>{{ $item->from }}</td>
                         <td>{{ $item->to }}</td>
-                        <td>{{ $item->day }}</td>
+                        {{-- <td>{{ $item->day }}</td> --}}
                         <td>
 
                             <a class="btn btn-warning btn-sm" href="{{ route('admin.schedules.edit', [ 'schedule' => $item->id ]) }}">
