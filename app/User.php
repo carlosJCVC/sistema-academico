@@ -97,6 +97,11 @@ class User extends Authenticatable
         return $res;
     }
 
+    public function getFullNameAttribute()
+    {
+        return ucfirst("{$this->name} {$this->last_name} {$this->lastnamemother}");
+    }
+
     public function schedules()
     {
         return $this->hasMany('App\Models\AsignatureGroupTeacher', 'teacher');

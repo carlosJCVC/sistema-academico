@@ -13,16 +13,23 @@ window.tilt = require('tilt.js');
 // window.CKEDITOR = require('ckeditor');
 // window.DateRangePicker = require('tiny-date-picker/dist/date-range-picker');
 
+// require('yearpicker.js/dist/yearpicker');
 require('select2');
 require('./custom');
 
-import TinyDatePicker from 'tiny-date-picker';
-window.TinyDatePicker = TinyDatePicker;
 
-import * as FilePond from 'filepond';
-window.FilePond = FilePond;
-//import { DateRangePicker } from 'tiny-date-picker/dist/date-range-picker';
-//window.DateRangePicker = DateRangePicker;
+import { TinyDatePicker, DateRangePicker } from 'tiny-date-picker/dist/date-range-picker';
+window.TinyDatePicker = TinyDatePicker;
+window.DateRangePicker = DateRangePicker;
+
+// import TinyDatePicker from 'tiny-date-picker';
+// window.TinyDatePicker = TinyDatePicker;
+// import { DateRangePicker } from 'tiny-date-picker/dist/date-range-picker';
+// window.DateRangePicker = DateRangePicker;
+
+// import * as FilePond from 'filepond';
+// window.FilePond = FilePond;
+
 //window.Vue = require('vue');
 
 /**

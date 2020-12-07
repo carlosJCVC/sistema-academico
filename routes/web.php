@@ -844,6 +844,19 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.', '
             'as' => 'asistencia-avance.destroy',
             'uses' => 'AsistenciaController@destroy',
         ]);
+        // ---------------------------------- PLANILLAS
+        Route::get('reports/asistencia-avance/planillas', [
+            'as' => 'asistencia-avance.planillas',
+            'uses' => 'PlanillaController@preview',
+        ]);
+        Route::post('reports/asistencia-avance/planillas', [
+            'as' => 'asistencia-avance.planillas.post',
+            'uses' => 'PlanillaController@previewPost',
+        ]);
+        Route::get('reports/asistencia-avance/planillas/index', [
+            'as' => 'asistencia-avance.planillas.index',
+            'uses' => 'PlanillaController@show',
+        ]);
     });
 
     //------------ REPOSICIONES DE CLASES --------------//

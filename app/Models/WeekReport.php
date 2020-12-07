@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
@@ -49,6 +50,11 @@ class WeekReport extends Model
     public function getGroup()
     {
         return AsignatureGroup::findOrFail($this->group);
+    }
+
+    public function getTeacher()
+    {
+        return User::findOrFail($this->user);
     }
 
     public function getAsignature()

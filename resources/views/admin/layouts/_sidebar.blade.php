@@ -112,6 +112,9 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.asistencia-avance.planillas') }}"><i class="icon-pin"></i> Planillas</a>
+                    </li>
                     {{-- <li class="nav-item">
                         <a class="nav-link" href="#"><i class="icon-chart"></i> Nuevo</a>
                     </li> --}}

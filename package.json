@@ -24,6 +24,7 @@
     "sweetalert2": "^9.1.5",
     "tilt.js": "^1.2.1",
     "tiny-date-picker": "^3.2.8",
-    "toastr": "^2.1.4"
+    "toastr": "^2.1.4",
+    "yearpicker.js": "^1.0.1"
   }
 }
