@@ -16,7 +16,7 @@ toastr.options = {
 }
 
 window.notification = (type, message) => {
-    switch(type){
+    switch (type) {
         case 'info':
             //toastr["success"]("My name is Inigo Montoya. You killed my father. Prepare to die!", "hi carlos")
             toastr.info(message);
@@ -38,17 +38,44 @@ window.notification = (type, message) => {
 
 module.exports = delete_action = (e) => {
     e.preventDefault();
+    console.log(e)
+    console.log(e.target.form)
     Swal.fire({
         title: 'Estas seguro!',
         text: 'Estas seguro de eliminar este registro ?',
-        type: 'info',
+        icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: 'hsl(120, 50%, 50%, 1)',
         cancelButtonColor: 'hsl(0, 50%, 50%, 1)',
-        confirmButtonText: 'Yes !! '
-    }).then(({value}) => {
+        confirmButtonText: 'Yes !!'
+    }).then(({ value }) => {
         if (value) {
             e.target.form.submit()
         }
     })
 };
+
+// window.swal_delete = (e) => {
+//     console.log('swal_delete');
+//     console.log(e)
+//     console.log(e.target.form)
+//     Swal.fire({
+//         title: 'Estas seguro!',
+//         text: 'Estas seguro de eliminar este registro ?',
+//         icon: 'warning',
+//         showCancelButton: true,
+//         confirmButtonColor: 'hsl(120, 50%, 50%, 1)',
+//         cancelButtonColor: 'hsl(0, 50%, 50%, 1)',
+//         confirmButtonText: 'Yes !!'
+//         // title: 'Está seguro de querer eliminar?',
+//         // buttons: ['No,cancelar', 'Si, estoy seguro!'],
+//     }).then((willDelete) => {
+//         if (willDelete.value) { // aka se procesa cuando es true
+//             console.log(e)
+//             console.log(e.target.form)
+//             console.log(willDelete)
+//             e.target.form.submit()
+//         }
+//     });
+// }
+

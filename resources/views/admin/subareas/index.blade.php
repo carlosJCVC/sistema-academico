@@ -40,7 +40,7 @@
 
                                 <button type="button" class="btn btn-danger btn-sm"
                                         onclick="delete_action(event);">
-                                    <i class="icon-trash"></i>
+                                    <i class="icon-trash penone"></i>
                                 </button>
                             </form>
 

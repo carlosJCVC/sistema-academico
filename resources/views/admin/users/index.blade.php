@@ -46,9 +46,9 @@
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
 
-                                <button type="button" class="btn btn-danger btn-sm"
-                                        onclick="delete_action(event);">
-                                    <i class="icon-trash"></i>
+                                <button type="button" class="btn btn-danger btn-sm" onclick="delete_action(event);">
+                                        {{-- onclick="delete_action(event);"> --}}
+                                    <i class="icon-trash penone"></i>
                                 </button>
                             </form>
 

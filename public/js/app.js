@@ -38432,14 +38432,16 @@ window.notification = function (type, message) {
 
 module.exports = delete_action = function delete_action(e) {
     e.preventDefault();
+    console.log(e);
+    console.log(e.target.form);
     Swal.fire({
         title: 'Estas seguro!',
         text: 'Estas seguro de eliminar este registro ?',
-        type: 'info',
+        icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: 'hsl(120, 50%, 50%, 1)',
         cancelButtonColor: 'hsl(0, 50%, 50%, 1)',
-        confirmButtonText: 'Yes !! '
+        confirmButtonText: 'Yes !!'
     }).then(function (_ref) {
         var value = _ref.value;
 
@@ -38448,6 +38450,30 @@ module.exports = delete_action = function delete_action(e) {
         }
     });
 };
+
+// window.swal_delete = (e) => {
+//     console.log('swal_delete');
+//     console.log(e)
+//     console.log(e.target.form)
+//     Swal.fire({
+//         title: 'Estas seguro!',
+//         text: 'Estas seguro de eliminar este registro ?',
+//         icon: 'warning',
+//         showCancelButton: true,
+//         confirmButtonColor: 'hsl(120, 50%, 50%, 1)',
+//         cancelButtonColor: 'hsl(0, 50%, 50%, 1)',
+//         confirmButtonText: 'Yes !!'
+//         // title: 'Está seguro de querer eliminar?',
+//         // buttons: ['No,cancelar', 'Si, estoy seguro!'],
+//     }).then((willDelete) => {
+//         if (willDelete.value) { // aka se procesa cuando es true
+//             console.log(e)
+//             console.log(e.target.form)
+//             console.log(willDelete)
+//             e.target.form.submit()
+//         }
+//     });
+// }
 
 /***/ }),
 /* 13 */
