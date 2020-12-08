@@ -34,12 +34,12 @@ class CreateAreasTable extends Migration
                 ->onDelete('cascade');
         });
 
-        Schema::create('subareas', function (Blueprint $table) {
+        Schema::create('authorities', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
             $table->integer('area_id')->unsigned();
             $table->string('slug');
-            $table->text('description');
+            $table->string('user');
+            $table->string('role');
             $table->timestamps();
 
             $table->foreign('area_id')
@@ -56,7 +56,7 @@ class CreateAreasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subareas');
+        Schema::dropIfExists('authorities');
         Schema::dropIfExists('areas');
         Schema::dropIfExists('academics');
     }

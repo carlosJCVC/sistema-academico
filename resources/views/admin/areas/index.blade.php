@@ -28,7 +28,7 @@
                         <td>{{ $area->name }}</td>
                         <td>
 
-                            <a class="btn btn-primary btn-sm" title="Subáreas" href="{{ route('admin.subareas.index', [ 'area' => $area->id ]) }}">
+                            <a class="btn btn-primary btn-sm" title="Subáreas" href="{{ route('admin.authorities.index', [ 'area' => $area->id ]) }}">
                                 <i class="icon-list"></i>
                             </a> &nbsp;
                             <a class="btn btn-warning btn-sm" href="{{ route('admin.areas.edit', [ 'area' => $area->id, 'academic' => $academic->id]) }}">

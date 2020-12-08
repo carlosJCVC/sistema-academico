@@ -282,33 +282,33 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.', '
     ]);
 
     //-------------- SUBAREAS ------------------//
-    Route::get('areas/{area}/subareas', [
-        'as' => 'subareas.index',
-        'uses' => 'SubareaController@index',
+    Route::get('areas/{area}/authorities', [
+        'as' => 'authorities.index',
+        'uses' => 'AuthorityController@index',
     ]);
-    Route::get('areas/{area}/subareas/create', [
-        'as' => 'subareas.create',
-        'uses' => 'SubareaController@create',
+    Route::get('areas/{area}/authorities/create', [
+        'as' => 'authorities.create',
+        'uses' => 'AuthorityController@create',
     ]);
-    Route::post('areas/{area}/subareas/store', [
-        'as' => 'subareas.store',
-        'uses' => 'SubareaController@store',
+    Route::post('areas/{area}/authorities/store', [
+        'as' => 'authorities.store',
+        'uses' => 'AuthorityController@store',
     ]);
-    Route::get('areas/{area}/subareas/{subarea}/edit', [
-        'as' => 'subareas.edit',
-        'uses' => 'SubareaController@edit',
+    Route::get('areas/{area}/authorities/{authority}/edit', [
+        'as' => 'authorities.edit',
+        'uses' => 'AuthorityController@edit',
     ]);
-    Route::put('areas/{area}/subareas/{subarea}', [
-        'as' => 'subareas.update',
-        'uses' => 'SubareaController@update',
+    Route::put('areas/{area}/authorities/{authority}', [
+        'as' => 'authorities.update',
+        'uses' => 'AuthorityController@update',
     ]);
-    Route::patch('areas/{area}/subareas/{subarea}', [
-        'as' => 'subareas.update',
-        'uses' => 'SubareaController@update',
+    Route::patch('areas/{area}/authorities/{authority}', [
+        'as' => 'authorities.update',
+        'uses' => 'AuthorityController@update',
     ]);
-    Route::delete('areas/{area}/subareas/{subarea}', [
-        'as' => 'subareas.destroy',
-        'uses' => 'SubareaController@destroy',
+    Route::delete('areas/{area}/authorities/{authority}', [
+        'as' => 'authorities.destroy',
+        'uses' => 'AuthorityController@destroy',
     ]);
 
     /*

@@ -1,16 +1,15 @@
 @extends('admin.layouts.app')
 
 @section('htmlheader_title')
-    Subáreas
+    Autoridades
 @endsection
-
 
 @section('content')
 
     <div class="card">
         <div class="card-header">
-            <i class="fa fa-align-justify"></i> Subáreas
-            <a class="btn btn-secondary" href="{{ route('admin.subareas.create', [ 'area' => $area->id ]) }}">
+            <i class="fa fa-align-justify"></i> Autoridades
+            <a class="btn btn-secondary" href="{{ route('admin.authorities.create', [ 'area' => $area->id ]) }}">
                 <i class="icon-plus"></i>&nbsp;Nuevo
             </a>
         </div>
@@ -19,19 +18,21 @@
                 <thead>
                 <tr>
                     <th class="w-50">Nombre</th>
+                    <th class="w-25">Cargo</th>
                     <th class="text-center">Opciones</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($subareas as $item)
+                @foreach($authorities as $item)
                     <tr>
-                        <td>{{ $item->name }}</td>
+                        <td>{{ $item->formatAuthority() }}</td>
+                        <td>{{ $item->formatCargo() }}</td>
                         <td class="text-center">
 
-                            <a class="btn btn-warning btn-sm" href="{{ route('admin.subareas.edit', [ 'area' => $area, 'subarea' => $item->id]) }}">
+                            <a class="btn btn-warning btn-sm" href="{{ route('admin.authorities.edit', [ 'area' => $area, 'authority' => $item->id]) }}">
                                 <i class="icon-pencil"></i>
                             </a> &nbsp;
-                            <form action="{{ route('admin.subareas.destroy', [ 'area' => $area, 'subarea' => $item->id ]) }}"
+                            <form action="{{ route('admin.authorities.destroy', [ 'area' => $area, 'authority' => $item->id ]) }}"
                                   style="display:inline-block;"
                                   method="POST">
 

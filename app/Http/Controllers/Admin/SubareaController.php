@@ -20,7 +20,7 @@ class SubareaController extends Controller
     {
         $subareas = DB::table('subareas')->where('area_id', $area->id)->get();
 
-        return view('admin.subareas.index', [ 'area' => $area, 'subareas' => $subareas ]);
+        return view('admin.subareas.index', ['area' => $area, 'subareas' => $subareas]);
     }
 
     /**
@@ -30,7 +30,7 @@ class SubareaController extends Controller
      */
     public function create(Area $area)
     {
-        return view('admin.subareas.create', [ 'area' => $area ]);
+        return view('admin.subareas.create', ['area' => $area]);
     }
 
     /**
@@ -48,7 +48,7 @@ class SubareaController extends Controller
         $subarea = new Subarea($input);
         $subarea->save();
 
-        return redirect(route('admin.subareas.index', [ 'area' => $area ]))->with([ 'message' => 'SubArea creado exitosamente!', 'alert-type' => 'success' ]);
+        return redirect(route('admin.subareas.index', ['area' => $area]))->with(['message' => 'SubArea creado exitosamente!', 'alert-type' => 'success']);
     }
 
     /**
@@ -59,7 +59,7 @@ class SubareaController extends Controller
      */
     public function edit(Area $area, Subarea $subarea)
     {
-        return view('admin.subareas.edit', [ 'area' => $area, 'subarea' => $subarea ]);
+        return view('admin.subareas.edit', ['area' => $area, 'subarea' => $subarea]);
     }
 
     /**
@@ -76,7 +76,7 @@ class SubareaController extends Controller
 
         $subarea->update($input);
 
-        return redirect()->route('admin.subareas.index', [ 'area' => $area ])->with(['message' => 'Subarea actualizado exitosamente!', 'alert-type' => 'success']);
+        return redirect()->route('admin.subareas.index', ['area' => $area])->with(['message' => 'Subarea actualizado exitosamente!', 'alert-type' => 'success']);
     }
 
     /**
@@ -89,6 +89,6 @@ class SubareaController extends Controller
     {
         $subarea->delete();
 
-        return redirect()->route('admin.subareas.index', [ 'area' => $area ])->with(['message' => 'Subarea eliminado exitosamente!', 'alert-type' => 'error']);
+        return redirect()->route('admin.subareas.index', ['area' => $area])->with(['message' => 'Subarea eliminado exitosamente!', 'alert-type' => 'error']);
     }
 }
