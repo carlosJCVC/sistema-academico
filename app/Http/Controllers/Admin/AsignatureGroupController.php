@@ -8,6 +8,7 @@ use App\Http\Requests\AsignatureGroupRequest;
 use App\Models\Asignature;
 use App\Models\AsignatureGroup;
 use App\Models\AsignatureGroupTeacher;
+use App\Models\Schedule;
 use App\User;
 
 class AsignatureGroupController extends Controller
@@ -16,6 +17,7 @@ class AsignatureGroupController extends Controller
     {
         $groups = AsignatureGroup::all();
         $groups->load('asignature');
+        // dd($groups);
         return view('admin.asignature-groups.index', [
             'groups' => $groups
         ]);
@@ -26,11 +28,15 @@ class AsignatureGroupController extends Controller
         $asignatures = Asignature::all();
         $teachers = User::all();
         $auxiliares = User::all();
-        return view('admin.asignature-groups.create', 
+        $schedules = Schedule::all();
+
+        return view(
+            'admin.asignature-groups.create',
             [
                 'asignatures' => $asignatures,
                 'teachers' => $teachers,
-                'auxiliares' => $auxiliares
+                'auxiliares' => $auxiliares,
+                'schedules' => $schedules
             ]
         );
     }
@@ -44,21 +50,32 @@ class AsignatureGroupController extends Controller
             'asignature_id' => $input['asignature']
         ]);
 
-        $teachersOfGroup = collect($input['teachers'])->map(function ($teacher) {
-            $groupTeacher = new AsignatureGroupTeacher([
-                'teacher' => $teacher['key'],
-                'from' => $teacher['from'],
-                'to' => $teacher['to'],
-                'day' => $teacher['day'],
-                'titular' => $teacher['titular']
-            ]);
-            return $groupTeacher;
+        // basicamente filtra si auxiliar esta presente 
+        // cuando los campos key y schedule no este null y tenga minimo 1 item respectivamente
+        // devuelve una collection
+        $valid_schedules_with_teachers = collect($input['teachers'])->filter(function ($teacher) {
+            if ($teacher['key'] && $teacher['schedules']) {
+                return $teacher;
+            }
         });
+
+        $group_schedules = collect([]);
+        foreach ($valid_schedules_with_teachers->toArray() as $data) {
+            $schedules = $data['schedules'];
+
+            foreach ($schedules as $schedule) {
+                $group_schedules->push(new AsignatureGroupTeacher([
+                    'teacher' => $data['key'],
+                    'titular' => $data['titular'],
+                    'schedule' => $schedule,
+                ]));
+            }
+        }
 
         try {
             $group->save();
             $group->refresh();
-            $teachersOfGroup->map(function($teacher) use($group) {
+            $group_schedules->map(function ($teacher) use ($group) {
                 $group->teachers()->save($teacher);
             });
         } catch (\Exception $e) {
@@ -69,7 +86,7 @@ class AsignatureGroupController extends Controller
         }
 
         return redirect(route('admin.asignature-group.index'))
-        ->with([ 'message' => 'Grupo de Materia creada exitosamente!', 'alert-type' => 'success' ]);
+            ->with(['message' => 'Grupo de Materia creada exitosamente!', 'alert-type' => 'success']);
     }
 
     public function show($id)
@@ -80,16 +97,18 @@ class AsignatureGroupController extends Controller
     public function edit($id)
     {
         $asignatureGroup = AsignatureGroup::findOrFail($id);
-        
+
         $asignatures = Asignature::all();
         $teachers = User::all();
         $auxiliares = User::all();
-        
+        $schedules = Schedule::all();
+
         return view('admin.asignature-groups.edit', [
             'group' => $asignatureGroup,
             'asignatures' => $asignatures,
             'teachers' => $teachers,
-            'auxiliares' => $auxiliares
+            'auxiliares' => $auxiliares,
+            'schedules' => $schedules
         ]);
     }
 
@@ -99,20 +118,28 @@ class AsignatureGroupController extends Controller
         $ag = AsignatureGroup::find($id);
         $ag->teachers()->delete(); // clear child models
         $ag->update($input);
-        
-        $teachersOfGroup = collect($input['teachers'])->map(function ($teacher) {
-            $groupTeacher = new AsignatureGroupTeacher([
-                'teacher' => $teacher['key'],
-                'from' => $teacher['from'],
-                'to' => $teacher['to'],
-                'day' => $teacher['day'],
-                'titular' => $teacher['titular']
-            ]);
-            return $groupTeacher;
+
+        $valid_schedules_with_teachers = collect($input['teachers'])->filter(function ($teacher) {
+            if ($teacher['key'] && $teacher['schedules']) {
+                return $teacher;
+            }
         });
 
+        $group_schedules = collect([]);
+        foreach ($valid_schedules_with_teachers->toArray() as $data) {
+            $schedules = $data['schedules'];
+
+            foreach ($schedules as $schedule) {
+                $group_schedules->push(new AsignatureGroupTeacher([
+                    'teacher' => $data['key'],
+                    'titular' => $data['titular'],
+                    'schedule' => $schedule,
+                ]));
+            }
+        }
+
         try {
-            $teachersOfGroup->map(function($teacher) use($ag) {
+            $group_schedules->map(function ($teacher) use ($ag) {
                 $ag->teachers()->save($teacher);
             });
         } catch (\Exception $e) {
@@ -122,15 +149,15 @@ class AsignatureGroupController extends Controller
         }
 
         return redirect()
-        ->route('admin.asignature-group.index')
-        ->with(['message' => 'Grupo de Materia actualizado exitosamente!', 'alert-type' => 'success']);
+            ->route('admin.asignature-group.index')
+            ->with(['message' => 'Grupo de Materia actualizado exitosamente!', 'alert-type' => 'success']);
     }
 
     public function destroy($id)
     {
         AsignatureGroup::destroy($id);
         return redirect()
-        ->route('admin.asignature-group.index')
-        ->with(['message' => 'Grupo de Materia eliminado exitosamente!', 'alert-type' => 'success']);
+            ->route('admin.asignature-group.index')
+            ->with(['message' => 'Grupo de Materia eliminado exitosamente!', 'alert-type' => 'success']);
     }
 }

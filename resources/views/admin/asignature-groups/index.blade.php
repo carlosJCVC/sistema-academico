@@ -35,9 +35,15 @@
                                     <li class="list-group-item" style="padding: 0 5px;border:none;background: transparent;">
                                         <div class="row">
                                             <div class="col-md-3">{{ $teacher->teacherIsTitular() }}</div>
-                                            <div class="col-md-3"><span class="text-muted">De:</span>&nbsp;{{ $teacher->from}}</div>
-                                            <div class="col-md-3"><span class="text-muted">Hasta:</span>&nbsp;{{ $teacher->to}}</div>
-                                            <div class="col-md-3"><span class="text-muted">Dia:</span>&nbsp;{{ $teacher->day}}</div>
+                                            <div class="col-md-3">
+                                                <span class="text-muted">De:</span>&nbsp;{{ $teacher->getStartSchedule()}}
+                                            </div>
+                                            <div class="col-md-3">
+                                                <span class="text-muted">Hasta:</span>&nbsp;{{ $teacher->getEndsSchedule()}}
+                                            </div>
+                                            <div class="col-md-3">
+                                                <span class="text-muted">Dia:</span>&nbsp;{{ $teacher->getDaySchedule()}}
+                                            </div>
                                         </div>
                                     </li>
                                 @endforeach

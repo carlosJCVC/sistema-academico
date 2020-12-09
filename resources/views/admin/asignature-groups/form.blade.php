@@ -23,7 +23,7 @@
             <span class="input-group-append">
                 <button class="btn btn-primary" type="button">M</button>
             </span>
-            <select class="form-control" name="asignature" id="asignature">
+            <select class="select2" name="asignature" id="asignature">
                 @foreach ($asignatures as $asignature)
                     <option value="{{ $asignature->id }}" {{ (isset($group) && $group->asignature_id == $asignature->id)? 'selected' : '' }}>{{ $asignature->name}}</option>    
                 @endforeach
@@ -42,7 +42,7 @@
             <span class="input-group-append">
                 <button class="btn btn-primary" type="button">D</button>
             </span>
-            <select class="form-control" name="teachers[0][key]" id="titular">
+            <select class="select2" name="teachers[0][key]" id="titular">
                 @foreach ($teachers as $titular)
                     <option value="{{ $titular->id }}" {{ (isset($group) && $group->teachers[0]->teacher == $titular->id) ? 'selected' : '' }}>{{ $titular->name}}</option>    
                 @endforeach
@@ -117,7 +117,7 @@
             <span class="input-group-append">
                 <button class="btn btn-primary" type="button">A</button>
             </span>
-            <select class="form-control" name="teachers[1][key]" id="auxiliar">
+            <select class="select2" name="teachers[1][key]" id="auxiliar">
                 @foreach ($auxiliares as $auxiliar)
                     <option value="{{ $auxiliar->id }}" {{ (isset($group) && $group->teachers[1]->teacher == $auxiliar->id) ? 'selected' : '' }}>{{ $auxiliar->name}}</option>
                 @endforeach
@@ -185,7 +185,7 @@
         </div>
     </div>
 
-    {{-- @if ($errors->any())
+    @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
@@ -193,6 +193,15 @@
             @endforeach
         </ul>
     </div>
-    @endif --}}
+    @endif
 
 </div>
+
+@section('scripts')
+    <script>
+    $('.select2').select2({
+        placeholder: "Seleccione un valor",
+        allowClear: true,
+    });
+    </script>
+@endsection

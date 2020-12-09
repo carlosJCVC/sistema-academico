@@ -47,4 +47,9 @@ class Schedule extends Model
                 break;
         }
     }
+
+    public function formatSchedule()
+    {
+        return "{$this->day} / {$this->from}-{$this->to}";
+    }
 }

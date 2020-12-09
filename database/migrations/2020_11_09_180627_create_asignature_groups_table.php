@@ -29,10 +29,15 @@ class CreateAsignatureGroupsTable extends Migration
 
             $table->integer('teacher')->unsigned();
             $table->foreign('teacher')->references('id')->on('users')->onDelete('cascade');
+
             $table->boolean('titular')->default(true);
-            $table->string('from');
-            $table->string('to');
-            $table->string('day');
+
+            // schedule
+            $table->integer('schedule')->unsigned();
+            $table->foreign('schedule')->references('id')->on('schedules')->onDelete('cascade');
+            // $table->string('from');
+            // $table->string('to');
+            // $table->string('day');
 
             $table->timestamps();
         });

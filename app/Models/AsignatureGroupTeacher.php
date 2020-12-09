@@ -8,7 +8,7 @@ class AsignatureGroupTeacher extends Model
 {
     protected $table = 'asignature_groups_teachers';
 
-    protected $fillable = ['group_id', 'teacher', 'titular', 'from', 'to', 'day'];
+    protected $fillable = ['group_id', 'teacher', 'titular', 'schedule'];
 
     public function group()
     {
@@ -23,5 +23,28 @@ class AsignatureGroupTeacher extends Model
     public function teacherIsTitular()
     {
         return $this->titular ? 'Horario docente' : 'Horario auxiliar';
+    }
+
+    public function getSchedule()
+    {
+        return Schedule::findOrFail($this->schedule);
+    }
+
+    public function getStartSchedule()
+    {
+        $schedule = $this->getSchedule();
+        return "{$schedule->from}";
+    }
+
+    public function getEndsSchedule()
+    {
+        $schedule = $this->getSchedule();
+        return "{$schedule->to}";
+    }
+
+    public function getDaySchedule()
+    {
+        $schedule = $this->getSchedule();
+        return "{$schedule->day}";
     }
 }

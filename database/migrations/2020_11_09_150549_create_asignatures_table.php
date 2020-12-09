@@ -19,6 +19,7 @@ class CreateAsignaturesTable extends Migration
             $table->string('year');
             $table->string('number'); // this field is for number of gestion as I, II, III 
             $table->timestamps();
+            // year and number make gestion in this asignature
         });
     }
 
