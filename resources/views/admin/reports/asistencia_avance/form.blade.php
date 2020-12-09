@@ -41,7 +41,7 @@
 </div>
 
 <div class="form-row">
-    <div class="col-md-6 mb-3">
+    <div class="col-md-4 mb-3">
         <label class="col-form-label" for="asignature">Materia : </label>
         <div class="input-group">
             <span class="input-group-append">
@@ -62,7 +62,7 @@
         </div>
     </div>
 
-    <div class="col-md-6 mb-3">
+    <div class="col-md-4 mb-3">
         <label class="col-form-label" for="group">Grupo: </label>
         <div class="input-group">
             <span class="input-group-append">
@@ -82,9 +82,6 @@
             {{ $errors->has('group')? $errors->first('group') : 'El campo es requerido'  }}
         </div>
     </div>
-</div>
-
-<div class="form-row">
 
     <div class="col-md-4 mb-3">
         <label class="col-form-label" for="date">Seleccione Fecha : </label>
@@ -104,8 +101,10 @@
             {{ $errors->has('date')? $errors->first('date') : 'El campo es requerido'  }}
         </div>
     </div>
+</div>
 
-    <div class="col-md-4 mb-3">
+<div class="form-row">
+    {{-- <div class="col-md-4 mb-3">
         <label class="col-form-label" for="from">De : </label>
         <div class="input-group">
             <span class="input-group-append">
@@ -141,7 +140,7 @@
         <div class="invalid-feedback {{ $errors->has('to')? 'd-block' : '' }}">
             {{ $errors->has('to')? $errors->first('to') : 'Este campo es requerido'  }}
         </div>
-    </div>
+    </div> --}}
 
     
 

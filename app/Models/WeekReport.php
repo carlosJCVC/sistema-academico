@@ -62,15 +62,15 @@ class WeekReport extends Model
         return Asignature::findOrFail($this->asignature);
     }
 
-    public function formatSchedule()
-    {
-        $group = $this->getGroup();
-        $schedule = $group->teachers()->first();
-        $from = $schedule->from;
-        $to = $schedule->to;
-        $day = $schedule->day;
-        return "{$from}-{$to} / {$day}";
-    }
+    // public function formatSchedule()
+    // {
+    //     $group = $this->getGroup();
+    //     $schedule = $group->teachers()->first();
+    //     $from = $schedule->from;
+    //     $to = $schedule->to;
+    //     $day = $schedule->day;
+    //     return "{$from}-{$to} / {$day}";
+    // }
 
     public function getUrlFile()
     {

@@ -60,8 +60,8 @@
             window.__.asignature.val(null).trigger("change");
             window.__.group.val(null).trigger("change");
             $('#cod_sis').val(null);
-            $('#from').val(null);
-            $('#to').val(null);
+            // $('#from').val(null);
+            // $('#to').val(null);
         }
 
         window.__.setCodSisValue = ({cod_sis}) => {
@@ -89,12 +89,13 @@
                 __.group.val({{ old('group') }}).trigger('change');
             @endif
         }
-        window.__.setSchedule = group_id => {
-            const {schedules} = __.data;
-            const schedule = schedules.find(schedule => schedule.group_id === group_id);
-            $('#from').val(schedule.from);
-            $('#to').val(schedule.to);
-        }
+        // window.__.setSchedule = group_id => {
+        //     console.log('setSchedule fired');
+        //     const {schedules} = __.data;
+        //     const schedule = schedules.find(schedule => schedule.group_id === group_id);
+        //     $('#from').val(schedule.from);
+        //     $('#to').val(schedule.to);
+        // }
 
         const select2_template = {
             placeholder: "Seleccione un valor",
@@ -115,6 +116,7 @@
             })
             .done(function( data, textStatus, jqXHR ) {
                 window.__.data = data;
+                console.log(__.data);
                 const {self, asignatures} = __.data;
                 __.setCodSisValue(self);
                 __.setAsignature(asignatures);
@@ -146,18 +148,18 @@
         });
          __.asignature.on("select2:opening", function (e) {
              __.group.select2().empty();
-            $('#from').val(null);
-            $('#to').val(null);
+            // $('#from').val(null);
+            // $('#to').val(null);
         });
 
-        __.group.on("select2:select", function (e) { 
-            const id =  e.target.value;
-            __.setSchedule(Number(id));
-        });
-         __.group.on("select2:opening", function (e) {
-            $('#from').val(null);
-            $('#to').val(null);
-        });
+        // __.group.on("select2:select", function (e) { 
+        //     const id =  e.target.value;
+        //     __.setSchedule(Number(id));
+        // });
+        //  __.group.on("select2:opening", function (e) {
+        //     $('#from').val(null);
+        //     $('#to').val(null);
+        // });
     </script>
     
     <script>

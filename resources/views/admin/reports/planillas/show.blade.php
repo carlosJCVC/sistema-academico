@@ -31,7 +31,7 @@ PLANILLA - Asistencia y Avance
                 <thead>
                 <tr>
                     <th>Fecha</th>
-                    <th>Horario</th>
+                    {{-- <th>Horario</th> --}}
                     <th>Materia</th>
                     <th>Grupo</th>
                     <th>Contenido-clase</th>
@@ -44,7 +44,7 @@ PLANILLA - Asistencia y Avance
                 @foreach($reports as $report)
                     <tr>
                         <td>{{ $report->formatDate() }}</td>
-                        <td>{{ $report->formatSchedule() }}</td>
+                        {{-- <td>{{ $report->formatSchedule() }}</td> --}}
                         <td class="text-capitalize">{{ $report->getAsignature()->name }}</td>
                         <td>{{ $report->getGroup()->group }}</td>
                         <td>{{ $report->bodyclass }}</td>

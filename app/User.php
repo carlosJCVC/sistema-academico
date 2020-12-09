@@ -120,8 +120,8 @@ class User extends Authenticatable
         });
 
         $out = [
-            'asignatures' => $asignatures->makeHidden(['created_at', 'updated_at'])->toArray(),
-            'groups' => $groups->makeHidden(['created_at', 'updated_at', 'asignature'])->toArray(),
+            'asignatures' => $asignatures->unique('id')->values()->makeHidden(['created_at', 'updated_at'])->toArray(),
+            'groups' => $groups->unique('id')->values()->makeHidden(['created_at', 'updated_at', 'asignature'])->toArray(),
             'schedules' => $schedules->makeHidden(['created_at', 'updated_at', 'group'])->toArray()
         ];
         return $out;
