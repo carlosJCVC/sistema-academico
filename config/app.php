@@ -180,6 +180,7 @@ return [
         /*
          * Libraries
          */
+        OwenIt\Auditing\AuditingServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
 
         Barryvdh\DomPDF\ServiceProvider::class,

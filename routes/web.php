@@ -918,4 +918,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.', '
         'as' => 'absences.destroy',
         'uses' => 'AbsencesController@destroy',
     ]);
+
+    Route::group(['namespace' => 'Audits'], function () {
+        //------------ AUDITS - BITACORAS--------------//
+        Route::get('audits/bitacoras', [
+            'as' => 'bitacoras.index',
+            'uses' => 'BitacoraController@index',
+        ]);
+    });
 });

@@ -45,7 +45,7 @@ class ScheduleController extends Controller
         $schedule = new Schedule($input);
         $schedule->save();
 
-        return redirect(route('admin.schedules.index', [ 'schedule' => $schedule ]))->with([ 'message' => 'Schedule creado exitosamente!', 'alert-type' => 'success' ]);
+        return redirect(route('admin.schedules.index', ['schedule' => $schedule]))->with(['message' => 'Horario creado exitosamente!', 'alert-type' => 'success']);
     }
 
     /**
@@ -56,7 +56,7 @@ class ScheduleController extends Controller
      */
     public function edit(Schedule $schedule)
     {
-        return view('admin.schedules.edit', [ 'schedule' => $schedule ]);
+        return view('admin.schedules.edit', ['schedule' => $schedule]);
     }
 
     /**
@@ -72,7 +72,7 @@ class ScheduleController extends Controller
 
         $schedule->update($input);
 
-        return redirect()->route('admin.schedules.index', [ 'schedule' => $schedule ])->with(['message' => 'Schedule actualizado exitosamente!', 'alert-type' => 'success']);
+        return redirect()->route('admin.schedules.index', ['schedule' => $schedule])->with(['message' => 'Horario actualizado exitosamente!', 'alert-type' => 'success']);
     }
 
     /**
@@ -85,6 +85,6 @@ class ScheduleController extends Controller
     {
         $schedule->delete();
 
-        return redirect()->route('admin.schedules.index', [ 'schedule' => $schedule ])->with(['message' => 'Schedule eliminado exitosamente!', 'alert-type' => 'success']);
+        return redirect()->route('admin.schedules.index', ['schedule' => $schedule])->with(['message' => 'Horario eliminado exitosamente!', 'alert-type' => 'success']);
     }
 }

@@ -5,9 +5,12 @@ namespace App\Models;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Permission\Models\Role;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class Authority extends Model
+class Authority extends Model implements Auditable
 {
+    use \OwenIt\Auditing\Auditable;
+
     protected $fillable = [
         'area_id', 'user', 'role', 'slug',
     ];
