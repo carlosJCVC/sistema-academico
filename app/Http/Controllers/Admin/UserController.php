@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Session;
 use App\Role;
 use DB;
@@ -23,9 +24,9 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
+        Log::info('LOG IN HOME HOME');
 
         return view('admin.users.index', compact('users'));
-
     }
 
     /**
@@ -48,11 +49,11 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
         $user = User::create($request->all());
-        $user->password=(bcrypt($user->password));
+        $user->password = (bcrypt($user->password));
         $user->save();
         $user->syncRoles($request->roles);
 
-        return redirect(route('admin.users.index'))->with([ 'message' => 'Usuario creado exitosamente!', 'alert-type' => 'success' ]);
+        return redirect(route('admin.users.index'))->with(['message' => 'Usuario creado exitosamente!', 'alert-type' => 'success']);
     }
 
     /**
@@ -67,7 +68,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
 
         $roles = Role::orderBy('display_name', 'asc')->lists('display_name', 'id');
-        return view('admin.users.show', compact('user','roles'));
+        return view('admin.users.show', compact('user', 'roles'));
     }
 
     /**
@@ -81,7 +82,7 @@ class UserController extends Controller
     {
         $roles = DB::table('roles')->get();
 
-        return view('admin.users.edit', [ 'user' => $user, 'roles' => $roles ]);
+        return view('admin.users.edit', ['user' => $user, 'roles' => $roles]);
     }
 
     /**
@@ -106,7 +107,7 @@ class UserController extends Controller
 
         $user->syncRoles($request->roles);
 
-        return redirect(route('admin.users.index'))->with([ 'message' => 'Usuario actualizado exitosamente!', 'alert-type' => 'success' ]);
+        return redirect(route('admin.users.index'))->with(['message' => 'Usuario actualizado exitosamente!', 'alert-type' => 'success']);
     }
 
     /**
@@ -120,8 +121,8 @@ class UserController extends Controller
     {
         User::destroy($id);
 
-        Session::flash('flash_message3', 'Usuario  '.$id.' Eliminado!');
+        Session::flash('flash_message3', 'Usuario  ' . $id . ' Eliminado!');
 
-        return redirect(route('admin.users.index'))->with([ 'message' => 'Usuario eliminado exitosamente!', 'alert-type' => 'info' ]);
+        return redirect(route('admin.users.index'))->with(['message' => 'Usuario eliminado exitosamente!', 'alert-type' => 'info']);
     }
 }

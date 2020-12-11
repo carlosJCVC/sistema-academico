@@ -9,8 +9,16 @@ class Bitacora extends Audit
 {
     public static function getAll()
     {
+        // ->getModified()
         // $audits = Audit::with('user')->orderBy('created_at', 'desc')->get();
-        return self::with('user')->orderBy('created_at', 'desc')->get();
+        $audits =  self::with('user')->orderBy('created_at', 'desc')->get();
+        return $audits;
+        // toy filtrando porque hay una issue, que cada vez de usuario cierra session crea un registro y no quiero mostrar eso
+        // return $audits->filter(function ($value, $key) {
+        //     if (!array_key_exists('remember_token', $value->getModified()) && $value->event !== 'updated') {
+        //         return $value;
+        //     }
+        // });
     }
 
     public function getRoleUserFiredEvent()

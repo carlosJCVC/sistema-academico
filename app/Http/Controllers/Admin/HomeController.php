@@ -7,7 +7,8 @@ use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
-    function index() {
+    function index()
+    {
         return view('admin.home');
     }
 }

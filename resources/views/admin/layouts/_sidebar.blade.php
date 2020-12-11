@@ -152,7 +152,7 @@
                         <a class="nav-link" href="{{ route('admin.bitacoras.index') }}"><i class="icon-book-open"></i> Lista</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.absences.create') }}"><i class="icon-event"></i> Sessiones</a>
+                        <a class="nav-link" href="{{ route('admin.bitacoras.histories') }}"><i class="icon-event"></i> Sessiones</a>
                     </li>
                 </ul>
             </li>

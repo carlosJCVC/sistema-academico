@@ -925,5 +925,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.', '
             'as' => 'bitacoras.index',
             'uses' => 'BitacoraController@index',
         ]);
+        Route::get('audits/user-sessions', [
+            'as' => 'bitacoras.histories',
+            'uses' => 'BitacoraController@usersHistorylist',
+        ]);
     });
 });
