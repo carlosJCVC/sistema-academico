@@ -930,4 +930,15 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.', '
             'uses' => 'BitacoraController@usersHistorylist',
         ]);
     });
+
+    Route::group([
+        'namespace'  => 'Backup',
+        // 'prefix'     => config('backpack.base.route_prefix', 'admin'),
+        // 'middleware' => ['web', 'admin'],
+    ], function () {
+        Route::get('backup', 'BackupController@index')->name('backup.backups');
+        Route::put('backup/create', 'BackupController@create')->name('backup.backups.new');
+        Route::get('backup/download/{file_name?}', 'BackupController@download');
+        Route::delete('backup/delete/{file_name?}', 'BackupController@delete')->where('file_name', '(.*)');
+    });
 });

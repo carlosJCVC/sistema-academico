@@ -51,13 +51,13 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
         ],
 
         'assets' => [
             'driver' => 'local',
-            'root' => public_path().'_html/assets',
+            'root' => public_path() . '_html/assets',
             'visibility' => 'public',
         ],
 
@@ -67,6 +67,12 @@ return [
             'secret' => env('AWS_SECRET'),
             'region' => env('AWS_REGION'),
             'bucket' => env('AWS_BUCKET'),
+        ],
+
+        // used for Backpack/BackupManager
+        'backups' => [
+            'driver' => 'local',
+            'root'   => storage_path('backups'), // that's where your backups are stored by default: storage/backups
         ],
 
     ],

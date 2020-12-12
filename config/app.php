@@ -181,6 +181,8 @@ return [
          * Libraries
          */
         OwenIt\Auditing\AuditingServiceProvider::class,
+        Spatie\Backup\BackupServiceProvider::class,
+        Backpack\BackupManager\BackupManagerServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
 
         Barryvdh\DomPDF\ServiceProvider::class,
