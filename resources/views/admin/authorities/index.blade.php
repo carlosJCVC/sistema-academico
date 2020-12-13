@@ -6,7 +6,7 @@
 
 @section('content')
 
-    <div class="card">
+    <div class="card mt-3">
         <div class="card-header">
             <i class="fa fa-align-justify"></i> Autoridades
             <a class="btn btn-secondary" href="{{ route('admin.authorities.create', [ 'area' => $area->id ]) }}">

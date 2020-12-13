@@ -7,7 +7,7 @@
 
 @section('content')
 
-    <div class="card">
+    <div class="card mt-3">
         <div class="card-header">
             <i class="fa fa-align-justify"></i> Unidades Academicas
             @can('create academics')

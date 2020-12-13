@@ -7,7 +7,7 @@
 
 @section('content')
 
-    <div class="card">
+    <div class="card mt-3">
         <div class="card-header">
             <i class="fa fa-align-justify"></i> Areas
             <a class="btn btn-secondary" href="{{ route('admin.areas.create', [ 'academic' => $academic->id ]) }}">
@@ -28,7 +28,7 @@
                         <td>{{ $area->name }}</td>
                         <td>
 
-                            <a class="btn btn-primary btn-sm" title="Subáreas" href="{{ route('admin.authorities.index', [ 'area' => $area->id ]) }}">
+                            <a class="btn btn-primary btn-sm" title="Autoridad" href="{{ route('admin.authorities.index', [ 'area' => $area->id ]) }}">
                                 <i class="icon-list"></i>
                             </a> &nbsp;
                             <a class="btn btn-warning btn-sm" href="{{ route('admin.areas.edit', [ 'area' => $area->id, 'academic' => $academic->id]) }}">

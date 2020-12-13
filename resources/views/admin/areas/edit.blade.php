@@ -15,7 +15,7 @@
 
 @section('content')
 
-    <div class="animated fadeIn">
+    <div class="animated fadeIn mt-3">
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">

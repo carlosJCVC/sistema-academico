@@ -2,6 +2,8 @@
 /public/hot
 /public/storage
 /storage/*.key
+/storage/backups/
+/storage/laravel-backups/
 /storage/framework/views/*
 /vendor
 /.idea
