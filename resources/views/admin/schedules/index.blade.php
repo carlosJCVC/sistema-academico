@@ -7,12 +7,14 @@
 
 @section('content')
 
-    <div class="card">
+    <div class="card mt-3">
         <div class="card-header">
             <i class="fa fa-align-justify"></i> Horarios
+            @can('create schedules')
             <a class="btn btn-secondary" href="{{ route('admin.schedules.create') }}">
                 <i class="icon-plus"></i>&nbsp;Nuevo
             </a>
+            @endcan
         </div>
         <div class="card-body">
             <table class="table table-bordered table-striped table-sm">
@@ -31,10 +33,13 @@
                         <td>{{ $item->to }}</td>
                         {{-- <td>{{ $item->day }}</td> --}}
                         <td>
-
+                            @can('edit schedules')
                             <a class="btn btn-warning btn-sm" href="{{ route('admin.schedules.edit', [ 'schedule' => $item->id ]) }}">
                                 <i class="icon-pencil"></i>
-                            </a> &nbsp;
+                            </a>
+                            @endif
+                            &nbsp;
+                            @can('delete schedules')
                             <form action="{{ route('admin.schedules.destroy', [ 'schedule' => $item->id ]) }}"
                                   style="display:inline-block;"
                                   method="POST">
@@ -47,7 +52,7 @@
                                     <i class="icon-trash penone"></i>
                                 </button>
                             </form>
-
+                            @endcan
                         </td>
                 @endforeach
                 </tbody>

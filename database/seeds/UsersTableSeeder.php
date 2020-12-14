@@ -14,17 +14,17 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         $users = [
-            [
-                'name' => 'Administrator',
-                'lastname' => 'Admin',
-                'phone' => '1254646',
-                'gender' => 'M',
-                'ci' => '545646646',
-                'cod_sis' => '20150558255',
-                'email' => 'admin@admin.com',
-                'password' => bcrypt('admin'),
-                'remember_token' => '',
-            ],
+            // [
+            //     'name' => 'Administrator',
+            //     'lastname' => 'Admin',
+            //     'phone' => '1254646',
+            //     'gender' => 'M',
+            //     'ci' => '545646646',
+            //     'cod_sis' => '20150558255',
+            //     'email' => 'admin@admin.com',
+            //     'password' => bcrypt('admin'),
+            //     'remember_token' => '',
+            // ],
             [
                 'name' => 'Bart',
                 'lastname' => 'Simpson',
@@ -85,13 +85,67 @@ class UsersTableSeeder extends Seeder
         foreach ($users as $item) {
             $user = User::create($item);
 
-            if ($user->name == 'Administrator') {
-                $user->assignRole(['Admin']);
-            } elseif ($user->name == 'Homero') {
-                $user->assignRole(['Jefe de departamento']);
-            } else {
-                $user->assignRole(['Decano']);
-            }
+            // if ($user->name == 'Administrator') {
+            //     $user->assignRole(['Admin']);
+            // } else {
+            //     $user->assignRole(['Jefe de departamento']);
+            // }
         }
+
+        $admin = [
+            'name' => 'Administrator',
+            'lastname' => 'Admin',
+            'phone' => '1254646',
+            'gender' => 'M',
+            'ci' => '545646646',
+            'cod_sis' => '20150558255',
+            'email' => 'admin@admin.com',
+            'password' => bcrypt('admin'),
+            'remember_token' => '',
+        ];
+        $user = User::create($admin);
+        $user->assignRole(['Administrador']);
+
+        $jefe = [
+            'name' => 'Jimmy',
+            'lastname' => 'Villarroel Novillo',
+            'phone' => '1254646',
+            'gender' => 'M',
+            'ci' => '545646646',
+            'cod_sis' => '20150558255',
+            'email' => 'jefe@jefe.com',
+            'password' => bcrypt('jefe'),
+            'remember_token' => '',
+        ];
+        $user = User::create($jefe);
+        $user->assignRole(['Jefe de departamento']);
+
+        $docente = [
+            'name' => 'Americo',
+            'lastname' => 'Fiorilo',
+            'phone' => '1254646',
+            'gender' => 'M',
+            'ci' => '545646646',
+            'cod_sis' => '20150558255',
+            'email' => 'docente@docente.com',
+            'password' => bcrypt('docente'),
+            'remember_token' => '',
+        ];
+        $user = User::create($docente);
+        $user->assignRole(['Docente']);
+
+        $auxiliar = [
+            'name' => 'Andrez',
+            'lastname' => 'Alba',
+            'phone' => '1254646',
+            'gender' => 'M',
+            'ci' => '545646646',
+            'cod_sis' => '20150558255',
+            'email' => 'auxiliar@auxiliar.com',
+            'password' => bcrypt('auxiliar'),
+            'remember_token' => '',
+        ];
+        $user = User::create($auxiliar);
+        $user->assignRole(['Auxiliar']);
     }
 }

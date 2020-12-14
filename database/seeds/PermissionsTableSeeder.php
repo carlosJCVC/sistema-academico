@@ -11,24 +11,79 @@ class PermissionsTableSeeder extends Seeder
      *
      * @return void
      */
+
+    // NO APARECE TODOS LOS PERMISOS para poder crear roles y asignar a los usuarios. 
+    // Por ejemplo, falta (horarios, informes, planillas, Reposiciones, Justificaciones) 
+
     public function run()
     {
         $permissions = [
-            [ 'name' => 'list users' ],
-            [ 'name' => 'create users' ],
-            [ 'name' => 'edit users' ],
-            [ 'name' => 'delete users' ],
 
-            [ 'name' => 'list roles' ],
-            [ 'name' => 'create roles' ],
-            [ 'name' => 'edit roles' ],
-            [ 'name' => 'delete roles' ],
+            ['name' => 'list users'],  // 1
+            ['name' => 'create users'], // 2
+            ['name' => 'edit users'], // 3
+            ['name' => 'delete users'], // 4
 
-            [ 'name' => 'list areas' ],
-            [ 'name' => 'create areas' ],
-            [ 'name' => 'edit areas' ],
-            [ 'name' => 'delete areas' ],
-/*
+            ['name' => 'list roles'], // 5
+            ['name' => 'create roles'],  // 6
+            ['name' => 'edit roles'], // 7
+            ['name' => 'delete roles'], // 8
+
+            ['name' => 'list schedules'], // 9
+            ['name' => 'create schedules'], // 10
+            ['name' => 'edit schedules'], // 11
+            ['name' => 'delete schedules'], // 12
+
+            ['name' => 'list academics'], // 13
+            ['name' => 'create academics'], // 14
+            ['name' => 'edit academics'], // 15
+            ['name' => 'delete academics'], // 16
+
+            ['name' => 'list areas'], // 17
+            ['name' => 'create areas'], // 18
+            ['name' => 'edit areas'], // 19
+            ['name' => 'delete areas'], // 20
+
+            ['name' => 'list authorities'], // 21
+            ['name' => 'create authorities'], // 22
+            ['name' => 'edit authorities'], // 23
+            ['name' => 'delete authorities'], // 24
+
+            ['name' => 'list asignatures'], // 25
+            ['name' => 'create asignatures'], // 26
+            ['name' => 'edit asignatures'], // 27
+            ['name' => 'delete asignatures'], // 28
+
+            ['name' => 'list groups'], // 29
+            ['name' => 'create groups'], // 30
+            ['name' => 'edit groups'], // 31
+            ['name' => 'delete groups'], // 32
+
+            ['name' => 'list week reports'], // 33
+            ['name' => 'create week reports'], // 34
+            ['name' => 'edit week reports'], // 35
+            ['name' => 'delete week reports'], // 36
+
+            ['name' => 'list reports planillas'], // 37
+
+            ['name' => 'list classroom'], // 38
+            ['name' => 'create classroom'], // 39
+            ['name' => 'edit classroom'], // 40
+            ['name' => 'delete classroom'], // 41
+
+            ['name' => 'list absences'], // 42
+            ['name' => 'create absences'], // 43
+            ['name' => 'edit absences'], // 44
+            ['name' => 'delete absences'], // 45
+
+            ['name' => 'list bitacoras'], // 46
+
+            ['name' => 'list backups'], // 47
+            ['name' => 'create backups'], // 48
+            ['name' => 'download backups'], // 49
+            ['name' => 'delete backups'], // 50
+
+            /*
             [ 'name' => 'list announcements' ],
             [ 'name' => 'create announcements' ],
             [ 'name' => 'show announcements' ],
@@ -73,12 +128,7 @@ class PermissionsTableSeeder extends Seeder
             [ 'name' => 'calificate postulants' ],
             [ 'name' => 'calificate merits postulants' ],
             [ 'name' => 'calificate rating postulants' ],
-*/ 
-            [ 'name' => 'list academics' ],
-            [ 'name' => 'create academics' ],
-            [ 'name' => 'edit academics' ],
-            [ 'name' => 'delete academics' ],
-/*
+
             [ 'name' => 'list avisos' ],
             [ 'name' => 'create avisos' ],
             [ 'name' => 'edit avisos' ],
@@ -96,21 +146,13 @@ class PermissionsTableSeeder extends Seeder
             */
         ];
 
-        $admin = Role::find(1);
-        $jdpa = Role::find(2);
-        $decano = Role::find(3);
-        $director = Role::find(4);
-        $dpa = Role::find(5);
+        // $admin = Role::find(1);
+        // $jdpa = Role::find(2);
+        // $decano = Role::find(3);
+        // $director = Role::find(4);
+        // $dpa = Role::find(5);
 
-        foreach ($permissions as $permission) {
-            Permission::create($permission);
-            $admin->givePermissionTo($permission);
-            $jdpa->givePermissionTo($permission);
-            $decano->givePermissionTo($permission);
-            $director->givePermissionTo($permission);
-            $dpa->givePermissionTo($permission);
-        }
-/*
+        /*
         $conocimiento->givePermissionTo([
             'list postulants',
             'list announcements',
@@ -143,5 +185,13 @@ class PermissionsTableSeeder extends Seeder
             'delete publishes'
         ]);
 */
+        foreach ($permissions as $permission) {
+            Permission::create($permission);
+            // $admin->givePermissionTo($permission);
+            // $jdpa->givePermissionTo($permission);
+            // $decano->givePermissionTo($permission);
+            // $director->givePermissionTo($permission);
+            // $dpa->givePermissionTo($permission);
+        }
     }
 }

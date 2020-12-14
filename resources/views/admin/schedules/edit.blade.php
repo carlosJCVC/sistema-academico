@@ -15,7 +15,7 @@
 
 @section('content')
 
-    <div class="animated fadeIn">
+    <div class="animated fadeIn mt-3">
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
@@ -29,7 +29,9 @@
                             @include('admin.schedules.form')
 
                             <div class="form-actions text-center">
+                                @can('edit schedules')
                                 <button class="btn btn-outline-primary" type="submit">Actualizar</button>
+                                @endcan
                                 <a class="btn btn-outline-danger" href="{{ route('admin.schedules.index', [ 'schedule' => $schedule ]) }}">Cancelar</a>
                             </div>
                         </form>

@@ -34,7 +34,9 @@
                             @include('admin.authorities.form')
 
                             <div class="form-actions text-center">
+                                @can('create authorities')
                                 <button class="btn btn-outline-primary" type="submit">Guardar</button>
+                                @endcan
                                 <a class="btn btn-outline-danger" href="{{ route('admin.areas.index', [ 'areas' => $area->id ]) }}">Cancelar</a>
                             </div>
                         </form>

@@ -10,9 +10,11 @@ Clases de reposicion
     <div class="card mt-3">
         <div class="card-header">
             <i class="fa fa-align-justify"></i> Clases de reposicion
+            @can('create classroom')
             <a class="btn btn-secondary" href="{{ route('admin.classes-reposiciones.create') }}">
                 <i class="icon-plus"></i>&nbsp;Nuevo
             </a>
+            @endcan
         </div>
         <div class="card-body">
             <table class="table table-bordered table-striped table-sm">
@@ -37,9 +39,13 @@ Clases de reposicion
                         <td>{{ $clase->formatDateReposition() }}</td>
                         <td>{{ $clase->formatSchedule() }}</td>
                         <td>
+                            @can('edit classroom')
                             <a class="btn btn-warning btn-sm" href="{{ route('admin.classes-reposiciones.edit', [ 'id' => $clase->id]) }}">
                                 <i class="icon-pencil"></i>
-                            </a> &nbsp;
+                            </a>
+                            @endcan
+                            &nbsp;
+                            @can('delete classroom')
                             <form action="{{ route('admin.classes-reposiciones.destroy', [ 'id' => $clase->id]) }}"
                                   style="display:inline-block;"
                                   method="POST">
@@ -52,6 +58,7 @@ Clases de reposicion
                                     <i class="icon-trash penone"></i>
                                 </button>
                             </form>
+                            @endcan
                         </td>
                 @endforeach
                 </tbody>

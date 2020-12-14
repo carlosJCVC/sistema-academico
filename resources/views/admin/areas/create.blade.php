@@ -26,7 +26,9 @@
                             @include('admin.areas.form')
 
                             <div class="form-actions text-center">
+                                @can('create areas')
                                 <button class="btn btn-outline-primary" type="submit">Guardar</button>
+                                @endcan
                                 <a class="btn btn-outline-danger" href="{{ route('admin.areas.index', [ 'academic' => $academic->id ]) }}">Cancelar</a>
                             </div>
                         </form>

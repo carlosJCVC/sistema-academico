@@ -34,7 +34,9 @@
                             @include('admin.reports.asistencia_avance.form')
 
                             <div class="form-actions text-center">
+                                @can('create week reports')
                                 <button class="btn btn-outline-primary" type="submit">Guardar</button>
+                                @endcan
                                 <a class="btn btn-outline-danger" href="{{ route('admin.asistencia-avance.index') }}">Cancelar</a>
                             </div>
                         </form>

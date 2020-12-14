@@ -29,7 +29,9 @@
                             @include('admin.asignatures.form')
 
                             <div class="form-actions text-center">
+                                @can('edit asignatures')
                                 <button class="btn btn-outline-primary" type="submit">Actualizar</button>
+                                @endcan
                                 <a class="btn btn-outline-danger" href="{{ route('admin.asignatures.index') }}">Cancelar</a>
                             </div>
                         </form>

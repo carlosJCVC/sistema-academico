@@ -35,7 +35,9 @@
                             @include('admin.classroom.form')
 
                             <div class="form-actions text-center">
+                                @can('edit classroom')
                                 <button class="btn btn-outline-primary" type="submit">Actualizar</button>
+                                @endcan
                                 <a class="btn btn-outline-danger" href="{{ route('admin.classes-reposiciones.index') }}">Cancelar</a>
                             </div>
                         </form>

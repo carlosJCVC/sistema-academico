@@ -23,11 +23,13 @@ Copias Seguridad
                     <i class="fa fa-wrench"></i> {{ $data['title'] or 'Backups de la base de datos' }}
                 </div>
                 <div class="col-md-6 text-right">
+                    @can('create backups')
                     <button id="create-new-backup-button" 
                         href="{{ url('admin/backup/create') }}"
                         class="ladda-button" data-style="zoom-in">
                         <span class="ladda-label text-muted"><i class="icon-plus"></i> Crear nuevo backup</span>
                     </button>
+                    @endcan
                 </div>
             </div>
             
@@ -60,6 +62,7 @@ Copias Seguridad
                                     {{ \Carbon\Carbon::createFromTimeStamp($backup['last_modified'])->diffForHumans() }}
                                 </td>
                                 <td>
+                                    @can('download backups')
                                     @if ($backup['download'])
                                     <a class="btn btn-primary"
                                         {{-- href="{{ url('admin/backup/download/'.$backup['file_name']) }}"> --}}
@@ -67,10 +70,13 @@ Copias Seguridad
                                         <i class="icon-cloud-download penone"></i>
                                     </a>
                                     @endif
+                                    @endcan
+                                    @can('delete backups')
                                     {{-- <a class="btn btn-xs btn-danger" data-button-type="delete" href="{{ url('/admin/backup/delete/'.$backup['file_name']) }}"> --}}
                                     <a class="btn btn-xs btn-danger" data-button-type="delete" href="{{ url('/admin/backup/delete/'.$backup['file_name']) }}?disk={{ $backup['disk'] }}">
                                         <i class="icon-trash penone"></i>
                                     </a>
+                                    @endcan
                                 </td>
                             </tr>
                         @endforeach

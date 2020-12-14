@@ -14,9 +14,27 @@ class RolesTableSeeder extends Seeder
     {
         $roles = [
             [
-                'name' => 'Admin',
+                'name' => 'Administrador',
+            ],
+            [
+                'name' => 'Jefe de departamento',
+            ],
+            [
+                'name' => 'Docente',
+            ],
+            [
+                'name' => 'Auxiliar',
             ],
             /*
+            [
+                'name' => 'Decano',
+            ],
+            [
+                'name' => 'Director Académico',
+            ],
+            [
+                'name' => 'DPA',
+            ],
             [
                 'name' => 'Validador',
             ],
@@ -27,18 +45,6 @@ class RolesTableSeeder extends Seeder
                 'name' => 'Postulante',
             ],
             */
-            [
-                'name' => 'Jefe de departamento',
-            ],
-            [
-                'name' => 'Decano',
-            ],
-            [
-                'name' => 'Director Académico',
-            ],
-            [
-                'name' => 'DPA',
-            ],
         ];
 
         foreach ($roles as $role) {

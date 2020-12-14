@@ -37,7 +37,9 @@
                             @include('admin.asignature-groups.form2')
 
                             <div class="form-actions text-center">
+                                @can('edit groups')
                                 <button class="btn btn-outline-primary" type="submit">Actualizar</button>
+                                @endcan
                                 <a class="btn btn-outline-danger" href="{{ route('admin.asignature-group.index') }}">Cancelar</a>
                             </div>
                         </form>

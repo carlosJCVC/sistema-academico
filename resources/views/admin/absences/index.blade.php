@@ -10,9 +10,11 @@ Justificaciones
     <div class="card mt-3">
         <div class="card-header">
             <i class="fa fa-align-justify"></i> Justificaciones
+            @can('create absences')
             <a class="btn btn-secondary" href="{{ route('admin.absences.create') }}">
                 <i class="icon-plus"></i>&nbsp;Nuevo
             </a>
+            @endcan
         </div>
         <div class="card-body">
             <table class="table table-bordered table-striped table-sm">
@@ -33,9 +35,13 @@ Justificaciones
                         <td>{{ $absence->formatSchedule() }}</td>
                         <td>{{ $absence->reason }}</td>
                         <td>
+                            @can('edit absences')
                             <a class="btn btn-warning btn-sm" href="{{ route('admin.absences.edit', [ 'id' => $absence->id]) }}">
                                 <i class="icon-pencil"></i>
-                            </a> &nbsp;
+                            </a>
+                            @endcan
+                            &nbsp;
+                            @can('delete absences')
                             <form action="{{ route('admin.absences.destroy', [ 'id' => $absence->id]) }}"
                                   style="display:inline-block;"
                                   method="POST">
@@ -48,6 +54,7 @@ Justificaciones
                                     <i class="icon-trash penone"></i>
                                 </button>
                             </form>
+                            @endcan
                         </td>
                 @endforeach
                 </tbody>

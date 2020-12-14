@@ -25,6 +25,10 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        // https://spatie.be/docs/laravel-permission/v2/basic-usage/super-admin
+        Gate::before(function ($user, $ability) {
+            // die('before called');
+            return $user->hasRole('Administrador') ? true : null;
+        });
     }
 }

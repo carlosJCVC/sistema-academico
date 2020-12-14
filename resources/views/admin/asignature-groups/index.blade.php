@@ -9,10 +9,12 @@
 
     <div class="card">
         <div class="card-header">
-            <i class="fa fa-align-justify"></i>Grupo
+            <i class="fa fa-align-justify"></i>Grupos de materias
+            @can('create groups')
             <a class="btn btn-secondary" href="{{ route('admin.asignature-group.create') }}">
                 <i class="icon-plus"></i>&nbsp;Nuevo
             </a>
+            @endcan
         </div>
         <div class="card-body">
             <table class="table table-bordered table-striped table-sm">
@@ -50,9 +52,13 @@
                             </ul>
                         </td>
                         <td>
+                            @can('edit groups')
                             <a class="btn btn-warning btn-sm" href="{{ route('admin.asignature-group.edit', [ 'group' => $group->id]) }}">
                                 <i class="icon-pencil"></i>
-                            </a> &nbsp;
+                            </a>
+                            @endcan
+                            &nbsp;
+                            @can('delete groups')
                             <form action="{{ route('admin.asignature-group.destroy', [ 'group' => $group->id]) }}"
                                   style="display:inline-block;"
                                   method="POST">
@@ -65,6 +71,7 @@
                                     <i class="icon-trash penone"></i>
                                 </button>
                             </form>
+                            @endcan
                         </td>
                 @endforeach
                 </tbody>

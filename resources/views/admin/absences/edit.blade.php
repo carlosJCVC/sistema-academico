@@ -35,7 +35,9 @@
                             @include('admin.absences.form')
 
                             <div class="form-actions text-center">
+                                @can('edit absences')
                                 <button class="btn btn-outline-primary" type="submit">Actualizar</button>
+                                @endcan
                                 <a class="btn btn-outline-danger" href="{{ route('admin.absences.index') }}">Cancelar</a>
                             </div>
                         </form>

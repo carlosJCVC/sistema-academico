@@ -10,9 +10,11 @@
     <div class="card mt-3">
         <div class="card-header">
             <i class="fa fa-align-justify"></i> Materias
+            @can('create asignatures')
             <a class="btn btn-secondary" href="{{ route('admin.asignatures.create') }}">
                 <i class="icon-plus"></i>&nbsp;Nuevo
             </a>
+            @endcan
         </div>
         <div class="card-body">
             <table class="table table-bordered table-striped table-sm">
@@ -29,9 +31,13 @@
                         <td>{{ $asignature->name }}</td>
                         <td>{{ $asignature->gestion }}</td>
                         <td>
+                            @can('edit asignatures')
                             <a class="btn btn-warning btn-sm" href="{{ route('admin.asignatures.edit', [ 'asignature' => $asignature->id]) }}">
                                 <i class="icon-pencil"></i>
-                            </a> &nbsp;
+                            </a>
+                            @endcan
+                            &nbsp;
+                            @can('delete asignatures')
                             <form action="{{ route('admin.asignatures.destroy', [ 'asignature' => $asignature->id]) }}"
                                   style="display:inline-block;"
                                   method="POST">
@@ -44,6 +50,7 @@
                                     <i class="icon-trash penone"></i>
                                 </button>
                             </form>
+                            @endcan
                         </td>
                 @endforeach
                 </tbody>

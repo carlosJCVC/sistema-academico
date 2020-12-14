@@ -11,7 +11,9 @@
         <div class="card-header">
             <i class="fa fa-align-justify"></i> Areas
             <a class="btn btn-secondary" href="{{ route('admin.areas.create', [ 'academic' => $academic->id ]) }}">
+                @can('create areas')
                 <i class="icon-plus"></i>&nbsp;Nuevo
+                @endcan
             </a>
         </div>
         <div class="card-body">
@@ -28,12 +30,19 @@
                         <td>{{ $area->name }}</td>
                         <td>
 
+                            @can('list authorities')
                             <a class="btn btn-primary btn-sm" title="Autoridad" href="{{ route('admin.authorities.index', [ 'area' => $area->id ]) }}">
                                 <i class="icon-list"></i>
-                            </a> &nbsp;
+                            </a>
+                            @endcan
+                            &nbsp;
+                            @can('edit areas')
                             <a class="btn btn-warning btn-sm" href="{{ route('admin.areas.edit', [ 'area' => $area->id, 'academic' => $academic->id]) }}">
                                 <i class="icon-pencil"></i>
-                            </a> &nbsp;
+                            </a>
+                            @endcan
+                            &nbsp;
+                            @can('delete areas')
                             <form action="{{ route('admin.areas.destroy', [ 'area' => $area->id, 'academic' => $academic->id]) }}"
                                   style="display:inline-block;"
                                   method="POST">
@@ -46,7 +55,7 @@
                                     <i class="icon-trash penone"></i>
                                 </button>
                             </form>
-
+                            @endcan
                         </td>
                 @endforeach
                 </tbody>
