@@ -11,6 +11,14 @@
     <link href="{{ asset('assets/css/animate.css') }}" rel="stylesheet" type="text/css" />
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+            <style>
+        .select2.select2-container.select2-container--default {
+            width: 100% !important;
+        }
+        .select2-selection {
+            height: 100% !important;
+        }
+    </style>
 @endsection
 
 @section('content')

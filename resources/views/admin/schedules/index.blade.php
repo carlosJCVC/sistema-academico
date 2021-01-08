@@ -31,13 +31,13 @@
                     <tr>
                         <td>{{ $item->from }}</td>
                         <td>{{ $item->to }}</td>
-                        {{-- <td>{{ $item->day }}</td> --}}
+                        <td>{{ $item->day }}</td>
                         <td>
                             @can('edit schedules')
                             <a class="btn btn-warning btn-sm" href="{{ route('admin.schedules.edit', [ 'schedule' => $item->id ]) }}">
                                 <i class="icon-pencil"></i>
                             </a>
-                            @endif
+                            @endcan
                             &nbsp;
                             @can('delete schedules')
                             <form action="{{ route('admin.schedules.destroy', [ 'schedule' => $item->id ]) }}"

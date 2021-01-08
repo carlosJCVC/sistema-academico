@@ -115,6 +115,7 @@ return [
     'url'                  => 'El formato :attribute es inválido.',
     'uuid'                 => 'El campo :attribute debe ser un UUID válido.',
 
+    'time_gt'               => 'El campo :attribute no debe exceder en 90 min a Desde',
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines

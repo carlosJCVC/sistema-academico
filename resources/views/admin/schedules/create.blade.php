@@ -9,6 +9,14 @@
     <link href="{{ asset('assets/css/util.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/animate.css') }}" rel="stylesheet" type="text/css" />
+        <style>
+        .select2.select2-container.select2-container--default {
+            width: 100% !important;
+        }
+        .select2-selection {
+            height: 100% !important;
+        }
+    </style>
 @endsection
 
 @section('content')

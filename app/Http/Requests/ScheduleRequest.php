@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ScheduleRequest extends FormRequest
 {
@@ -23,26 +24,46 @@ class ScheduleRequest extends FormRequest
      */
     public function rules()
     {
+        $from = $this->from;
+        $to = $this->to;
         switch ($this->method()) {
             case 'GET':
             case 'DELETE': {
-                return [];
-            }
+                    return [];
+                }
             case 'POST': {
-                return [
-                    'from' => 'required|max:100',
-                    'to' => 'required|max:500',
-                    'day' => 'required|max:500',
-                ];
-            }
+                    return [
+                        'from' => 'required',
+                        'to' => 'required|after:from|time_gt:from,90',
+                        'day' => [
+                            'required',
+                            'max:50',
+                            Rule::unique('schedules')->where(function ($query) use ($from, $to) {
+                                $query->where([
+                                    ['from', '=', $from],
+                                    ['to', '=', $to],
+                                ]);
+                            })
+                        ],
+                    ];
+                }
             case 'PUT':
             case 'PATCH': {
-                return [
-                    'from' => 'required|max:100',
-                    'to' => 'required|max:500',
-                    'day' => 'required|max:500',
-                ];
-            }
+                    return [
+                        'from' => 'required',
+                        'to' => 'required|after:from|time_gt:from,90',
+                        'day' => [
+                            'required',
+                            'max:50',
+                            Rule::unique('schedules')->ignore($this->schedule->id)->where(function ($query) use ($from, $to) {
+                                $query->where([
+                                    ['from', '=', $from],
+                                    ['to', '=', $to],
+                                ]);
+                            })
+                        ],
+                    ];
+                }
             default:
                 break;
         }
@@ -57,18 +78,16 @@ class ScheduleRequest extends FormRequest
         return [
             'from.required' => 'El campo :attribute es obligatorio.',
             'to.required' => 'El campo :attribute es obligatorio.',
-            'from.max' => 'El campo :attribute no debe ser mayor a 100 caracteres.',
-            'to.max' => 'El campo :attribute no debe ser mayor a 500 caracteres.',
-            'day.max' => 'El campo :attribute no debe ser mayor a 100 caracteres.',
-            'day.max' => 'El campo :attribute no debe ser mayor a 500 caracteres.',
+            'day.max' => 'El campo :attribute no debe ser mayor a 50 caracteres.',
+            'day.unique' => 'Ya existe un horario con estos datos.',
         ];
     }
 
     public function attributes()
     {
         return [
-            'from' => 'De',
-            'to' => 'A',
+            'from' => 'Desde',
+            'to' => 'Hasta',
             'day' => 'Dia',
         ];
     }
