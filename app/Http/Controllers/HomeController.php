@@ -11,16 +11,6 @@ use App\Models\Publish;
 class HomeController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    // public function __construct()
-    // {
-    //   $this->middleware('auth');
-    // }
-
-    /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Http\Response
@@ -31,7 +21,9 @@ class HomeController extends Controller
         // $announcements = Announcement::orderBy('created_at', 'asc')->take(4)->get();
         //return view('home', [ 'announcements' => $announcements, 'avisos' => $avisos ]);
         // return view('auth.login');
-        return redirect('login');
+
+        // return redirect('login');
+        return view('home');
     }
 
     // public function login()

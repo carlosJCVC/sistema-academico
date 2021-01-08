@@ -20,7 +20,7 @@
 <body>
     <div class="pre-loader">
         <div class="load-con">
-            <img src="{{ asset('img/log.png') }}" class="animated fadeInDown" alt="">
+            <img src="{{ asset('logo.png') }}" class="animated fadeInDown" alt="">
             <div class="spinner">
                 <div class="bounce1"></div>
                 <div class="bounce2"></div>
@@ -36,7 +36,7 @@
                 <div class="container">
                     <div class="row mh-container">
                         <h1><span>Bienvenidos </span></h1>
-                        <h3>Nuevas convocatorias lanzadas </h3>
+                        <h3>SISTEMA DE REGISTRO DE ASISTENCIA Y AVANCE DE MATERIAS</h3>
                         {{--
                         <div class="col-md-4 col-md-push-4">
                             <div class="btn-group btn-group-justified btn-lg small">
@@ -66,15 +66,25 @@
 
                         <div class="col-md-10 col-md-push-1 hidden-xs mh-slider">
                             <div class="row">
-                                <div class="col-md-3">
+                                <div class="col">
+                                    <div class="jumbotron py-1" style="margin-bottom: 0;">
+                                        <h4 class="dispay-5">
+                                            Sistema de colaboracion para el seguimiento de informes de las clases en 
+                                            <strong class="text-uppercase" style="color: #de5749;">Universidad Mayor de San Simon</strong>.
+                                        </h4>
+                                    </div>
+                                    <hr class="my-2">
                                 </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3"></div>
                                 <div class="col-md-6">
                                     <div id="carousel-slider" class="carousel slide" data-ride="carousel">
 
                                         <!-- Wrapper for slides -->
                                         <div class="carousel-inner">
                                             <div class="item active">
-                                                <img src="{{ asset('assets/images/logoumss.png') }}" alt="..." style="height: 350px" class="img-responsive">
+                                                <img src="{{ asset('assets/images/logoumss.png') }}" alt="..." style="height: 300px" class="img-responsive">
                                             </div>
                                             <!--
                                             <div class="item">
@@ -93,9 +103,7 @@
                                     </div>
 
                                 </div>
-                                <div class="col-md-3">
-
-                                </div>
+                                <div class="col-md-3"></div>
                             </div>
                         </div>
                     </div>
@@ -111,30 +119,30 @@
                             <i class="fa fa-align-justify"></i>
                         </button>
                         <a class="navbar-brand" href="#">
-                            <img src="{{ asset('img/log.png') }}" alt="">
+                            <img src="{{ asset('logo.png') }}" alt="" class="rounded" style="height: 70px">
                         </a>
                     </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav social hidden-xs hidden-sm">
-                            <li><a href="javascript:void(0)"><i class="fa fa-google-plus fa-lg fa-fw"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter fa-lg fa-fw"></i></a></li>
-                            <li><a href="#"><i class="fa fa-facebook fa-lg fa-fw"></i></a></li>
-                            <li><a href="#"><i class="fa fa-pinterest fa-lg fa-fw"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin fa-lg fa-fw"></i></a></li>
+                            {{-- <li><a href="javascript:void(0)"><i class="fa fa-google-plus fa-lg fa-fw"></i></a></li> --}}
+                            {{-- <li><a href="#"><i class="fa fa-twitter fa-lg fa-fw"></i></a></li> --}}
+                            {{-- <li><a href="#"><i class="fa fa-facebook fa-lg fa-fw"></i></a></li> --}}
+                            {{-- <li><a href="#"><i class="fa fa-pinterest fa-lg fa-fw"></i></a></li> --}}
+                            {{-- <li><a href="#"><i class="fa fa-linkedin fa-lg fa-fw"></i></a></li> --}}
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li class="active"><a href="#slider">Inicio</a></li>
-                            <li><a href="#features">Caracteristicas</a></li>
-                            <li><a href="#announcements">Ultimas Convocatorias</a></li>
-                            <li><a href="{{ url('/announcements') }}">Convocatorias</a></li>
-                            <li><a href="{{ route('home.publishes') }}">Publicaciones</a></li>
-                            <li><a href="#avisos">Avisos</a></li>
+                            {{-- <li><a href="#features">Caracteristicas</a></li> --}}
+                            {{-- <li><a href="#announcements">Ultimas Convocatorias</a></li> --}}
+                            {{-- <li><a href="{{ url('/announcements') }}">Convocatorias</a></li> --}}
+                            {{-- <li><a href="{{ route('home.publishes') }}">Publicaciones</a></li> --}}
+                            {{-- <li><a href="#avisos">Avisos</a></li> --}}
                             @if(!Auth::check())
                                 <li><a href="{{ url('/login') }}">Login</a></li>
                             @else
-                                <li><a href="{{ route('admin.dashboard') }}">Home</a></li>
+                                <li><a href="{{ route('admin.dashboard') }}">/</a></li>
                             @endif
                             {{-- <li><a href="{{ url('/register') }}">Registrarse</a></li> --}}
                         </ul>
@@ -146,7 +154,7 @@
             <!--/.navbar -->
         </header>
 
-        <section id="announcements">
+        {{-- <section id="announcements">
             <div class="container">
                 <div id="carousel-team" class="carousel slide" data-ride="carousel">
                     <div class="row">
@@ -190,9 +198,9 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> --}}
 
-        <section id="avisos">
+        {{-- <section id="avisos">
             <div class="container">
                 <div id="carousel-team" class="carousel slide" data-ride="carousel">
                     <div class="row">
@@ -236,7 +244,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> --}}
 
         <footer id="contact">
             <div class="container">
@@ -285,7 +293,7 @@
                             </ul>
                         </div>
                         <p class="rights">
-                            2020 <span>UMSS</span> Developed by <a href="#"><span>Cbbasoft@mail.com</span></a>
+                            2021 <span>UMSS</span> Developed by <a href="#"><span>digitaldevelopment@mail.com</span></a>
                         </p>
                     </div>
                 </div>

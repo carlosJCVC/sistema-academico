@@ -1,15 +1,6 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
@@ -29,25 +20,25 @@ Route::get('/reset_password', [
     'uses' => 'Auth\ResetPasswordController@showResetForm'
 ]);
 
-Route::get('/announcements', [
-    'as' => 'home.announcements',
-    'uses' => 'HomeController@announcements'
-]);
+// Route::get('/announcements', [
+//     'as' => 'home.announcements',
+//     'uses' => 'HomeController@announcements'
+// ]);
 
-Route::get('/publishes', [
-    'as' => 'home.publishes',
-    'uses' => 'HomeController@publishes'
-]);
+// Route::get('/publishes', [
+//     'as' => 'home.publishes',
+//     'uses' => 'HomeController@publishes'
+// ]);
 
-Route::get('/publishes/{publish}/download', [
-    'as' => 'home.download',
-    'uses' => 'HomeController@publishDownload'
-]);
+// Route::get('/publishes/{publish}/download', [
+//     'as' => 'home.download',
+//     'uses' => 'HomeController@publishDownload'
+// ]);
 
-Route::get('/announcements/{announcement}', [
-    'as' => 'home.announcements.show',
-    'uses' => 'HomeController@getAnnouncement'
-]);
+// Route::get('/announcements/{announcement}', [
+//     'as' => 'home.announcements.show',
+//     'uses' => 'HomeController@getAnnouncement'
+// ]);
 
 Route::get('announcements/{announcement}/show', 'AnnouncementController@show')->name('announcements.show');
 
