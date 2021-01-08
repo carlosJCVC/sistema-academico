@@ -26,33 +26,33 @@ class UserRequest extends FormRequest
         switch ($this->method()) {
             case 'GET':
             case 'DELETE': {
-                return [];
-            }
+                    return [];
+                }
             case 'POST': {
-                return [
-                    'name' => 'required|max:100',
-                    'lastname' => 'required|max:100',
-                    'gender' => 'required',
-                    'ci' => 'required|digits_between:5,8|unique:users,ci',
-                    'cod_sis' => 'required|digits_between:5,10|unique:users,cod_sis',
-                    'email' => 'required|email|unique:users,email',
-                    'password' => 'required|between:3,32',
-                    'password_confirm' => 'required|same:password',
-                    'roles' => 'required',
-                ];
-            }
+                    return [
+                        'name' => 'required|max:100',
+                        'lastname' => 'required|max:100',
+                        'gender' => 'required',
+                        'ci' => 'required|digits_between:5,8|unique:users,ci',
+                        'cod_sis' => 'required|digits_between:5,10|unique:users,cod_sis',
+                        'email' => 'required|email|unique:users,email',
+                        'password' => 'required|between:3,32',
+                        'password_confirm' => 'required|same:password',
+                        'roles' => 'required',
+                    ];
+                }
             case 'PUT':
             case 'PATCH': {
-                return [
-                    'name' => 'required|max:100',
-                    'lastname' => 'required|max:100',
-                    'gender' => 'required',
-                    'ci' => 'required|digits_between:5,8|unique:users,ci, ' . $this->user->id,
-                    'cod_sis' => 'required|digits_between:5,10|unique:users,cod_sis,' . $this->user->id,
-                    'email' => 'required|email|unique:users,email,' . $this->user->id,
-                    'roles' => 'required',
-                ];
-            }
+                    return [
+                        'name' => 'required|max:100',
+                        'lastname' => 'required|max:100',
+                        'gender' => 'required',
+                        'ci' => 'required|digits_between:5,8|unique:users,ci, ' . $this->user->id,
+                        'cod_sis' => 'required|digits_between:5,10|unique:users,cod_sis,' . $this->user->id,
+                        'email' => 'required|email|unique:users,email,' . $this->user->id,
+                        'roles' => 'required',
+                    ];
+                }
             default:
                 break;
         }
@@ -72,7 +72,7 @@ class UserRequest extends FormRequest
             'roles.required' => 'El campo :attribute es obligatorio.',
             'ci.required' => 'El campo :attribute es obligatorio.',
             'cod_sis.required' => 'El campo :attribute es obligatorio.',
-            
+
             'ci.digits_between' => 'El :attribute debe estar entre 5 y 8 digitos.',
             'cod_sis.digits_between' => 'El :attribute debe estar entre 5 y 10 digitos.',
 
@@ -98,5 +98,4 @@ class UserRequest extends FormRequest
             'role' => 'Role o Roles',
         ];
     }
-
 }
