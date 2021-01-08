@@ -1,6 +1,6 @@
 <div class="form-row">
     <div class="col-md-4 mx-auto mb-3">
-        <label class="col-form-label" for="name">Nombre</label>
+        <label class="col-form-label" for="name">Nombre del rol</label>
         <div class="input-group">
             <span class="input-group-append">
                 <button class="btn btn-primary" type="button">N</button>

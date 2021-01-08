@@ -26,21 +26,23 @@ class RoleRequest extends FormRequest
         switch ($this->method()) {
             case 'GET':
             case 'DELETE': {
-                return [];
-            }
+                    return [];
+                }
             case 'POST': {
-                return [
-                    'name' => 'required|max:100',
-                    // 'description' => 'required|max:200',
-                ];
-            }
+                    return [
+                        'name' => 'required|max:100|unique:roles,name',
+                        'permissions' => 'required|array|min:1'
+                        // 'description' => 'required|max:200',
+                    ];
+                }
             case 'PUT':
             case 'PATCH': {
-                return [
-                    'name' => 'required|max:100',
-                    // 'description' => 'required|max:200',
-                ];
-            }
+                    return [
+                        'name' => 'required|max:100|unique:roles,name, ' . $this->role->id,
+                        'permissions' => 'required|array|min:1'
+                        // 'description' => 'required|max:200',
+                    ];
+                }
             default:
                 break;
         }
@@ -62,7 +64,7 @@ class RoleRequest extends FormRequest
     {
         return [
             'name' => 'Nombre',
-            // 'description' => 'Descripcion',
+            'permissions' => 'Permisos'
         ];
     }
 }

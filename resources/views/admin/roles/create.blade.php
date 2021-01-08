@@ -27,7 +27,7 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <i class="fa fa-edit"></i>Crear role</div>
+                        <i class="fa fa-edit"></i>Crear rol</div>
                     <div class="card-body">
                         <form class="form-horizontal" action="{{ route('admin.roles.store') }}" method="POST">
                             {{ csrf_field() }}

@@ -8,7 +8,7 @@
 @section('content')
     <div class="card mt-3">
         <div class="card-header">
-            <i class="fa fa-align-justify"></i> Usuarios
+            <i class="fa fa-align-justify"></i> Roles
             <a class="btn btn-secondary" href="{{ route('admin.roles.create') }}">
                 <i class="icon-plus"></i>&nbsp;Nuevo
             </a>

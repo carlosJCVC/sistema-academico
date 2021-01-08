@@ -27,7 +27,7 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <i class="fa fa-edit"></i>Editar role</div>
+                        <i class="fa fa-edit"></i>Editar rol</div>
                     <div class="card-body">
 
                         <form class="form-horizontal" action="{{ route('admin.roles.update', $role->id) }}" method="POST" autocomplete="off">
