@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class AsignatureGroupRequest extends FormRequest
 {
@@ -23,6 +24,8 @@ class AsignatureGroupRequest extends FormRequest
      */
     public function rules()
     {
+        $group = $this->group;
+
         switch ($this->method()) {
             case 'GET':
             case 'DELETE': {
@@ -31,7 +34,15 @@ class AsignatureGroupRequest extends FormRequest
             case 'POST': {
                     return [
                         'group' => 'required|numeric',
-                        'asignature' => 'required|exists:asignatures,id',
+                        'asignature' => [
+                            'required',
+                            'exists:asignatures,id',
+                            Rule::unique('asignature_groups', 'asignature_id')->where(function ($query) use ($group) {
+                                $query->where([
+                                    ['group', '=', $group],
+                                ]);
+                            })
+                        ],
                         'teachers' => 'required|array|min:1',
                         'teachers.0.key' => 'required|exists:users,id',
                         'teachers.0.titular' => 'required|boolean',
@@ -48,7 +59,15 @@ class AsignatureGroupRequest extends FormRequest
             case 'PATCH': {
                     return [
                         'group' => 'required|numeric',
-                        'asignature' => 'required|exists:asignatures,id',
+                        'asignature' => [
+                            'required',
+                            'exists:asignatures,id',
+                            Rule::unique('asignature_groups', 'asignature_id')->ignore($this->id)->where(function ($query) use ($group) {
+                                $query->where([
+                                    ['group', '=', $group],
+                                ]);
+                            })
+                        ],
                         'teachers' => 'required|array|min:1',
                         'teachers.0.key' => 'required|exists:users,id',
                         'teachers.0.titular' => 'required|boolean',
@@ -75,6 +94,7 @@ class AsignatureGroupRequest extends FormRequest
         return [
             'group.required' => 'El campo :attribute es obligatorio.',
             'asignature.required' => 'El campo :attribute es obligatorio.',
+            'asignature.unique' => 'Ya existe un grupo de materia con estos datos.',
             'teachers.0.key.required' => 'El campo :attribute es obligatorio.',
             'teachers.0.key.exists' => 'El campo :attribute debe ser valido y estar presente en el sistema.',
             'teachers.0.schedules.required' => 'El campo :attribute es obligatorio.',

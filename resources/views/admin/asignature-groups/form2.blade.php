@@ -1,10 +1,12 @@
-@if ($errors->any())
-<div class="alert alert-danger">
-    <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
-    </ul>
+@if ($errors->has('asignature'))
+<div class="form-row">
+    <div class="col-md-12 mb-3">
+        <div class="alert alert-danger">
+            <ul>
+                <li>{{ $errors->first('asignature') }}</li>
+            </ul>
+        </div>
+    </div>
 </div>
 @endif
 
@@ -61,7 +63,7 @@
                 <option value="">....</option>
                 @foreach ($teachers as $titular)
                     <option value="{{ $titular->id }}" {{ old('teachers.0.key', isset($group) ? $group->getTitular() : '') == $titular->id ? 'selected' : '' }}>
-                        {{ $titular->name}}
+                        {{ $titular->full_name}}
                     </option>
                 @endforeach
             </select>
@@ -107,7 +109,7 @@
                 <option value="">....</option>
                 @foreach ($auxiliares as $auxiliar)
                     <option value="{{ $auxiliar->id }}" {{ old('teachers.1.key', isset($group) ? $group->getAuxiliar() : '') == $auxiliar->id ? 'selected' : '' }}>
-                        {{ $auxiliar->name}}
+                        {{ $auxiliar->full_name}}
                     </option>
                 @endforeach
             </select>
@@ -157,3 +159,13 @@ https://5balloons.info/laravel-validation-retain-old-values-in-multiple-select-b
     });
     </script>
 @endsection
+
+{{-- @if ($errors->any())
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif --}}

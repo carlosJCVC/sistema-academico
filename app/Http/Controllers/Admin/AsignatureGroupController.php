@@ -17,7 +17,6 @@ class AsignatureGroupController extends Controller
     {
         $groups = AsignatureGroup::all();
         $groups->load('asignature');
-        // dd($groups);
         return view('admin.asignature-groups.index', [
             'groups' => $groups
         ]);
@@ -26,8 +25,17 @@ class AsignatureGroupController extends Controller
     public function create()
     {
         $asignatures = Asignature::all();
-        $teachers = User::all();
-        $auxiliares = User::all();
+        $users = User::all();
+        $users->load('roles');
+
+        $teachers = $users->filter(function ($user, $key) {
+            return $user->hasRole('Docente');
+        });
+
+        $auxiliares = $users->filter(function ($user, $key) {
+            return $user->hasRole('Auxiliar');
+        });
+
         $schedules = Schedule::all();
 
         return view(
@@ -97,10 +105,18 @@ class AsignatureGroupController extends Controller
     public function edit($id)
     {
         $asignatureGroup = AsignatureGroup::findOrFail($id);
-
         $asignatures = Asignature::all();
-        $teachers = User::all();
-        $auxiliares = User::all();
+        $users = User::all();
+        $users->load('roles');
+
+        $teachers = $users->filter(function ($user, $key) {
+            return $user->hasRole('Docente');
+        });
+
+        $auxiliares = $users->filter(function ($user, $key) {
+            return $user->hasRole('Auxiliar');
+        });
+
         $schedules = Schedule::all();
 
         return view('admin.asignature-groups.edit', [
