@@ -20,7 +20,7 @@ class AreaController extends Controller
     {
         $areas = DB::table('areas')->where('academic_id', $academic->id)->get();
 
-        return view('admin.areas.index', [ 'areas' => $areas, 'academic' => $academic ]);
+        return view('admin.areas.index', ['areas' => $areas, 'academic' => $academic]);
     }
 
     /**
@@ -30,7 +30,7 @@ class AreaController extends Controller
      */
     public function create(Academic $academic)
     {
-        return view('admin.areas.create', [ 'academic' => $academic ]);
+        return view('admin.areas.create', ['academic' => $academic]);
     }
 
     /**
@@ -48,7 +48,7 @@ class AreaController extends Controller
         $area = new Area($input);
         $area->save();
 
-        return redirect(route('admin.areas.index', [ 'academic' => $academic ]))->with([ 'message' => 'Area creado exitosamente!', 'alert-type' => 'success' ]);
+        return redirect(route('admin.areas.index', ['academic' => $academic]))->with(['message' => 'Carrera creada exitosamente!', 'alert-type' => 'success']);
     }
 
     /**
@@ -59,7 +59,7 @@ class AreaController extends Controller
      */
     public function edit(Academic $academic, Area $area)
     {
-        return view('admin.areas.edit', [ 'academic' => $academic, 'area' => $area ]);
+        return view('admin.areas.edit', ['academic' => $academic, 'area' => $area]);
     }
 
     /**
@@ -75,7 +75,7 @@ class AreaController extends Controller
 
         $area->update($input);
 
-        return redirect()->route('admin.areas.index', [ 'academic' => $academic ])->with(['message' => 'Area actualizado exitosamente!', 'alert-type' => 'success']);
+        return redirect()->route('admin.areas.index', ['academic' => $academic])->with(['message' => 'Carrera actualizada exitosamente!', 'alert-type' => 'success']);
     }
 
     /**
@@ -88,7 +88,6 @@ class AreaController extends Controller
     {
         $area->delete();
 
-        return redirect()->route('admin.areas.index', [ 'academic' => $academic ])->with(['message' => 'Area eliminado exitosamente!', 'alert-type' => 'success']);
+        return redirect()->route('admin.areas.index', ['academic' => $academic])->with(['message' => 'Carrera eliminada exitosamente!', 'alert-type' => 'success']);
     }
-
 }

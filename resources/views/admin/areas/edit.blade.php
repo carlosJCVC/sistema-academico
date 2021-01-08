@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('htmlheader_title')
-    Area
+    Carreras
 @endsection
 
 @section('styles')
@@ -20,7 +20,7 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <i class="fa fa-edit"></i>Editar area</div>
+                        <i class="fa fa-edit"></i>Editar carrera</div>
                     <div class="card-body">
                         <form class="form-horizontal" action="{{ route('admin.areas.update', [ 'academic' => $academic, 'area' => $area ]) }}" method="POST">
                             {{ method_field('PUT')}}

@@ -242,32 +242,32 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.', '
         'uses' => 'PostulantController@calificate'
     ]);
 
-    //-------------- AREAS ------------------//
-    Route::get('academics/{academic}/areas', [
+    //-------------- AREAS fixing to carrera------------------//
+    Route::get('academics/{academic}/carreras', [
         'as' => 'areas.index',
         'uses' => 'AreaController@index',
     ]);
-    Route::get('academics/{academic}/areas/create', [
+    Route::get('academics/{academic}/carrera/create', [
         'as' => 'areas.create',
         'uses' => 'AreaController@create',
     ]);
-    Route::post('academics/{academic}/areas/store', [
+    Route::post('academics/{academic}/carrera/store', [
         'as' => 'areas.store',
         'uses' => 'AreaController@store',
     ]);
-    Route::get('academics/{academic}/areas/{area}/edit', [
+    Route::get('academics/{academic}/carrera/{area}/edit', [
         'as' => 'areas.edit',
         'uses' => 'AreaController@edit',
     ]);
-    Route::put('academics/{academic}/areas/{area}', [
+    Route::put('academics/{academic}/carrera/{area}', [
         'as' => 'areas.update',
         'uses' => 'AreaController@update',
     ]);
-    Route::patch('academics/{academic}/areas/{area}', [
+    Route::patch('academics/{academic}/carrera/{area}', [
         'as' => 'areas.update',
         'uses' => 'AreaController@update',
     ]);
-    Route::delete('academics/{academic}/areas/{area}', [
+    Route::delete('academics/{academic}/carrera/{area}', [
         'as' => 'areas.destroy',
         'uses' => 'AreaController@destroy',
     ]);

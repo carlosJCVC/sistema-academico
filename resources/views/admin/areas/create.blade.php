@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('htmlheader_title')
-    Area
+    Carreras
 @endsection
 
 @section('styles')
@@ -18,7 +18,7 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <i class="fa fa-edit"></i>Crear area</div>
+                        <i class="fa fa-edit"></i>Crear carrera</div>
                     <div class="card-body">
                         <form class="form-horizontal" action="{{ route('admin.areas.store', ['academic' => $academic->id]) }}" method="POST">
                             {{ csrf_field() }}

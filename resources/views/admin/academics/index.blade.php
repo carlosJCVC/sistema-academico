@@ -38,7 +38,7 @@
                         </td>
                         <td class="text-center">
                             @can('list areas')
-                            <a class="btn btn-warning btn-sm" title="Áreas" href="{{ route('admin.areas.index', $academic->id) }}">
+                            <a class="btn btn-warning btn-sm" title="Carreras" href="{{ route('admin.areas.index', $academic->id) }}">
                                 <i class="icon-list"></i>
                             </a> &nbsp;
                             @endcan

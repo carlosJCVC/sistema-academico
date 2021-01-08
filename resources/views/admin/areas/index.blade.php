@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('htmlheader_title')
-    Areas
+    Carreras
 @endsection
 
 
@@ -9,7 +9,7 @@
 
     <div class="card mt-3">
         <div class="card-header">
-            <i class="fa fa-align-justify"></i> Areas
+            <i class="fa fa-align-justify"></i> Carreras
             <a class="btn btn-secondary" href="{{ route('admin.areas.create', [ 'academic' => $academic->id ]) }}">
                 @can('create areas')
                 <i class="icon-plus"></i>&nbsp;Nuevo
