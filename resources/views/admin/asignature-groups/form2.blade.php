@@ -10,6 +10,18 @@
 </div>
 @endif
 
+@if ($errors->has('teachers.1.schedules'))
+<div class="form-row">
+    <div class="col-md-12 mb-3">
+        <div class="alert alert-danger">
+            <ul>
+                <li>{{ $errors->first('teachers.1.schedules') }}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+@endif
+
 <div class="form-row">
     <div class="col-md-4 mx-auto mb-3">
         <label class="col-form-label" for="group">Numero grupo</label>

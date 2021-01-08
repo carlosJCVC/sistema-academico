@@ -25,6 +25,7 @@ class AsignatureGroupRequest extends FormRequest
     public function rules()
     {
         $group = $this->group;
+        $teachers_schedules = $this->teachers[0]['schedules'] ?? [];
 
         switch ($this->method()) {
             case 'GET':
@@ -49,7 +50,13 @@ class AsignatureGroupRequest extends FormRequest
                         'teachers.0.schedules' => 'required|array|min:1',
                         'teachers.1.key' => 'nullable|exists:users,id',
                         'teachers.1.titular' => 'nullable|boolean',
-                        'teachers.1.schedules' => 'nullable|array|min:1|required_with:teachers.1.key',
+                        'teachers.1.schedules' => [
+                            'nullable',
+                            'array',
+                            'min:1',
+                            'required_with:teachers.1.key', // si auxiliar esta presente, entonces es requirido
+                            Rule::notIn($teachers_schedules),
+                        ]
                         // 'teachers.*.from' => 'required|string',
                         // 'teachers.*.to' => 'required|string',
                         // 'teachers.*.day' => 'required|string',
@@ -74,7 +81,13 @@ class AsignatureGroupRequest extends FormRequest
                         'teachers.0.schedules' => 'required|array|min:1',
                         'teachers.1.key' => 'nullable|exists:users,id',
                         'teachers.1.titular' => 'nullable|boolean',
-                        'teachers.1.schedules' => 'nullable|array|min:1|required_with:teachers.1.key',
+                        'teachers.1.schedules' => [
+                            'nullable',
+                            'array',
+                            'min:1',
+                            'required_with:teachers.1.key', // si auxiliar esta presente, entonces es requirido
+                            Rule::notIn($teachers_schedules),
+                        ]
                         // 'teachers.*.from' => 'required|string',
                         // 'teachers.*.to' => 'required|string',
                         // 'teachers.*.day' => 'required|string',
@@ -102,6 +115,7 @@ class AsignatureGroupRequest extends FormRequest
 
             'teachers.1.key.exists' => 'El campo :attribute debe ser valido y estar presente en el sistema.',
             'teachers.1.schedules.required_with' => 'El campo :attribute es obligatorio cuando auxiliar esta presente.',
+            'teachers.1.schedules.not_in' => 'El campo :attribute es invalido, existe superposicion de horarios.',
         ];
     }
 
