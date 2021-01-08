@@ -18,15 +18,15 @@
 
 <div class="form-row">
     <div class="col-md-4 mx-auto mb-3">
-        <label class="col-form-label" for="roles">Roles</label>
+        <label class="col-form-label" for="roles">Permisos</label>
         <div class="input-group">
             <span class="input-group-append">
-                <button class="btn btn-primary" type="button">R</button>
+                <button class="btn btn-primary" type="button">P</button>
             </span>
             <select class="select2 {{ $errors->has('roles') ? 'is-invalid' : '' }}" name="permissions[]" multiple="multiple">
                 @foreach($permissions as $item)
                     <option value="{{ $item->name }}" {{ (isset($role) && $role->permissions->contains('name', $item->name)) ? 'selected' : '' }}>
-                        {{ $item->name }}
+                        {{ __("permisions.{$item->name}") }}
                     </option>
                 @endforeach
             </select>
