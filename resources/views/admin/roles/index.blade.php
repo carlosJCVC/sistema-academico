@@ -30,9 +30,13 @@
                             @foreach($role->permissions as $item)
                                 <span class="badge badge-info">{{ __("permisions.{$item->name}") }}</span>
                             @endforeach
+
+                            @if($role->name == 'Administrador')
+                                <span class="badge badge-primary text-uppercase font-weight-bolder">acceso a todos los permisos</span>
+                            @endif
                         </td>
                         <td>
-
+                            @if($role->name != 'Administrador')
                             <a class="btn btn-warning btn-sm" href="{{ route('admin.roles.edit', $role->id) }}">
                                 <i class="icon-pencil"></i>
                             </a> &nbsp;
@@ -48,7 +52,7 @@
                                     <i class="icon-trash penone"></i>
                                 </button>
                             </form>
-
+                            @endif
                         </td>
                 @endforeach
                 </tbody>
