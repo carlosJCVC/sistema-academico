@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class AsignatureRequest extends FormRequest
 {
@@ -23,26 +24,46 @@ class AsignatureRequest extends FormRequest
      */
     public function rules()
     {
+        $year = $this->year;
+        $gestion = $this->number;
+        $name = $this->name;
+
         switch ($this->method()) {
             case 'GET':
             case 'DELETE': {
-                return [];
-            }
+                    return [];
+                }
             case 'POST': {
-                return [
-                    'year' => 'required|numeric',
-                    'number' => 'required',
-                    'name' => 'required|regex:/^[a-zA-Z0-9\s]+$/|max:100',
-                ];
-            }
+                    return [
+                        'name' => 'required|regex:/^[a-zA-Z0-9\s]+$/|max:100',
+                        'year' => 'required|numeric',
+                        'number' => [
+                            'required',
+                            Rule::unique('asignatures')->where(function ($query) use ($year, $name) {
+                                $query->where([
+                                    ['year', '=', $year],
+                                    ['name', '=', $name],
+                                ]);
+                            })
+                        ]
+                    ];
+                }
             case 'PUT':
             case 'PATCH': {
-                return [
-                    'year' => 'required|numeric',
-                    'number' => 'required',
-                    'name' => 'required|regex:/^[a-zA-Z0-9\s]+$/|max:100',
-                ];
-            }
+                    return [
+                        'name' => 'required|regex:/^[a-zA-Z0-9\s]+$/|max:100',
+                        'year' => 'required|numeric',
+                        'number' => [
+                            'required',
+                            Rule::unique('asignatures')->ignore($this->asignature->id)->where(function ($query) use ($year, $name) {
+                                $query->where([
+                                    ['year', '=', $year],
+                                    ['name', '=', $name],
+                                ]);
+                            })
+                        ]
+                    ];
+                }
             default:
                 break;
         }
@@ -61,6 +82,7 @@ class AsignatureRequest extends FormRequest
             'name.max' => 'El campo :attribute no debe ser mayor a 100 caracteres.',
             'name.regex' => 'El campo :attribute solo puede contener letras y espacios y numeros.',
             'year.numeric' => 'El campo :attribute debe ser un año valido.',
+            'number.unique' => 'Ya existe una materia con estos datos.',
         ];
     }
 
