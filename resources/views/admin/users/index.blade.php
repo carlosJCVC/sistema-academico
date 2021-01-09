@@ -55,6 +55,15 @@
                         </td>
                 @endforeach
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="7">
+                            <button class="btn bg-dark text-white" type="button">
+                                <i class="fa fa-file-pdf-o" aria-hidden="true"></i>&nbsp;Descargar
+                            </button>
+                        </td>
+                    </tr>
+                </tfoot>
             </table>
         </div>
     </div>

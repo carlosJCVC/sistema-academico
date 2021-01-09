@@ -17,6 +17,7 @@ Clases de reposicion
             @endcan
         </div>
         <div class="card-body">
+            @if($classes->isNotEmpty())
             <table class="table table-bordered table-striped table-sm">
                 <thead>
                 <tr>
@@ -62,7 +63,19 @@ Clases de reposicion
                         </td>
                 @endforeach
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="7">
+                            <button class="btn bg-dark text-white" type="button">
+                                <i class="fa fa-file-pdf-o" aria-hidden="true"></i>&nbsp;Descargar
+                            </button>
+                        </td>
+                    </tr>
+                </tfoot>
             </table>
+            @else
+                <h5 class="card-title">Sin clases de reposicion.</h5>
+            @endif
         </div>
     </div>
     

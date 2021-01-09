@@ -17,6 +17,7 @@ Justificaciones
             @endcan
         </div>
         <div class="card-body">
+            @if($absences->isNotEmpty())
             <table class="table table-bordered table-striped table-sm">
                 <thead>
                 <tr>
@@ -58,7 +59,19 @@ Justificaciones
                         </td>
                 @endforeach
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="7">
+                            <button class="btn bg-dark text-white" type="button">
+                                <i class="fa fa-file-pdf-o" aria-hidden="true"></i>&nbsp;Descargar
+                            </button>
+                        </td>
+                    </tr>
+                </tfoot>
             </table>
+            @else
+                <h5 class="card-title">No hay justificaciones de ausencia.</h5>
+            @endif
         </div>
     </div>
     

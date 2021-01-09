@@ -17,6 +17,7 @@ Asistencia y Avance
             @endcan
         </div>
         <div class="card-body">
+            @if($reports->isNotEmpty())
             <table class="table table-bordered table-striped table-sm">
                 <thead>
                 <tr>
@@ -69,7 +70,19 @@ Asistencia y Avance
                         </td>
                 @endforeach
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="7">
+                            <button class="btn bg-dark text-white" type="button">
+                                <i class="fa fa-file-pdf-o" aria-hidden="true"></i>&nbsp;Descargar
+                            </button>
+                        </td>
+                    </tr>
+                </tfoot>
             </table>
+            @else
+                <h5 class="card-title">No hay reportes de asistencia/avance de materias.</h5>
+            @endif
         </div>
     </div>
     

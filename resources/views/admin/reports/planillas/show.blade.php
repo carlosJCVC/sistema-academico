@@ -27,6 +27,7 @@ PLANILLA - Asistencia y Avance
             </div>
         </div>
         <div class="card-body">
+            @if($reports->isNotEmpty())
             <table class="table table-bordered table-striped table-sm">
                 <thead>
                 <tr>
@@ -59,14 +60,26 @@ PLANILLA - Asistencia y Avance
                         </td>
                 @endforeach
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="7">
+                            <button class="btn bg-dark text-white" type="button">
+                                <i class="fa fa-file-pdf-o" aria-hidden="true"></i>&nbsp;Descargar
+                            </button>
+                        </td>
+                    </tr>
+                </tfoot>
             </table>
+            @else
+                <h5 class="card-title">No hay reportes.</h5>
+            @endif
         </div>
         <div class="card-footer">
             <div class="row">
                 <div class="col">
                     <a class="btn btn-secondary" href="{{ route('admin.asistencia-avance.planillas') }}">
-                <i class="icon-arrow-left"></i>&nbsp;Volver
-            </a>
+                        <i class="icon-arrow-left"></i>&nbsp;Volver
+                    </a>
                 </div>    
             </div>
         </div>
