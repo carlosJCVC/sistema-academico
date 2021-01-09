@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Log;
 use Spatie\Permission\Traits\HasRoles;
 use OwenIt\Auditing\Contracts\Auditable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 use \OwenIt\Auditing\Models\Audit;
 
@@ -16,6 +17,7 @@ class User extends Authenticatable implements Auditable
 {
     use Notifiable, HasRoles;
     use \OwenIt\Auditing\Auditable;
+    use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -34,6 +36,8 @@ class User extends Authenticatable implements Auditable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    protected $dates = ['deleted_at'];
 
     /**
      * The announcements that belong to the user.

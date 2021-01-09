@@ -17,6 +17,7 @@ class CreateAreasTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->boolean('status')->default(0);
+            $table->softDeletes();
             $table->timestamps();
         });
 
@@ -26,6 +27,7 @@ class CreateAreasTable extends Migration
             $table->integer('academic_id')->unsigned();
             $table->string('slug');
             $table->text('description');
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('academic_id')
@@ -40,6 +42,7 @@ class CreateAreasTable extends Migration
             $table->string('slug');
             $table->string('user');
             $table->string('role');
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('area_id')

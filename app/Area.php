@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use OwenIt\Auditing\Contracts\Auditable;
 
 class Area extends Model
 {
+    use \OwenIt\Auditing\Auditable;
+    use SoftDeletes;
     /**
      * The attributes that are mass assignable.
      *
@@ -14,6 +18,8 @@ class Area extends Model
     protected $fillable = [
         'academic_id', 'name', 'slug', 'description',
     ];
+
+    protected $dates = ['deleted_at'];
 
     /**
      * Get the comments for the blog post.

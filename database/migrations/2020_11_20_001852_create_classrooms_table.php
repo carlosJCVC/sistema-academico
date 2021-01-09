@@ -22,6 +22,7 @@ class CreateClassroomsTable extends Migration
             $table->string('from'); // hora inicio de reposicion
             $table->string('to'); // hora fin de reposicion
             $table->text('reason');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

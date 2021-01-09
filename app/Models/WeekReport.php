@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 use OwenIt\Auditing\Contracts\Auditable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class WeekReport extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
+    use SoftDeletes;
 
     protected $table = 'week_reports';
 
@@ -28,7 +30,8 @@ class WeekReport extends Model implements Auditable
     ];
 
     protected $dates = [
-        'date'
+        'date',
+        'deleted_at'
     ];
 
     protected $casts = [

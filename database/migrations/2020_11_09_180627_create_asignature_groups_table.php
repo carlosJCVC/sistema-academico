@@ -17,8 +17,8 @@ class CreateAsignatureGroupsTable extends Migration
             $table->increments('id');
             $table->string('group');
             $table->integer('asignature_id')->unsigned();
-            $table->foreign('asignature_id')->references('id')->on('asignatures')->onDelete('cascade');
-
+            $table->foreign('asignature_id')->references('id')->on('asignatures'); //->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
 

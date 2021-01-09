@@ -18,6 +18,7 @@ class CreateAsignaturesTable extends Migration
             $table->string('name');
             $table->string('year');
             $table->string('number'); // this field is for number of gestion as I, II, III 
+            $table->softDeletes();
             $table->timestamps();
             // year and number make gestion in this asignature
         });

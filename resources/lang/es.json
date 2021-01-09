@@ -1,0 +1,12 @@
+{
+    "User": "Usuario",
+    "Absence": "Ausencia/Justificacion",
+    "Asignature": "Materia",
+    "AsignatureGroup": "Grupo de materia",
+    "Authority": "Autoridad",
+    "Schedule": "Horario",
+    "Area": "Area",
+    "WeekReport": "Informe semanal",
+    "Classroom": "Reposicion",
+    "Academic": "Unidad academica"
+}

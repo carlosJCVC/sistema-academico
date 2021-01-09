@@ -26,6 +26,7 @@ class CreateWeekReportsTable extends Migration
             $table->boolean('has_file')->default(false);
             $table->text('filename')->nullable();
             $table->text('file_path')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

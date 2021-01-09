@@ -32,6 +32,7 @@ class CreateUsersTable extends Migration
             $table->enum('status', ['HABILITADO', 'INHABILITADO'])->default('HABILITADO');
             $table->text('observations')->nullable();
             $table->rememberToken();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

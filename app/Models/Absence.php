@@ -6,10 +6,12 @@ use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 use OwenIt\Auditing\Contracts\Auditable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Absence extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
+    use SoftDeletes;
 
     protected $table = 'absences';
 
@@ -20,6 +22,8 @@ class Absence extends Model implements Auditable
         'from',
         'to'
     ];
+
+    protected $dates = ['deleted_at'];
 
     public function setDateAbsenceAttribute($value)
     {

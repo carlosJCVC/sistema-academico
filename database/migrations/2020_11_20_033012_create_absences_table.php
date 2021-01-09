@@ -20,6 +20,7 @@ class CreateAbsencesTable extends Migration
             $table->text('reason');
             $table->string('from');
             $table->string('to');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
