@@ -34,9 +34,9 @@ class ClassroomRequest extends FormRequest
                         'asignature' => 'required|numeric',
                         'date_suspended' => 'required',
                         'reason' => 'required|max:150',
-                        'date_reposition' => 'required',
+                        'date_reposition' => 'required|after:date_suspended',
                         'from' => 'required',
-                        'to' => 'required',
+                        'to' => 'required|after:from',
                     ];
                 }
             case 'PUT':
@@ -46,9 +46,9 @@ class ClassroomRequest extends FormRequest
                         'asignature' => 'required|numeric',
                         'date_suspended' => 'required',
                         'reason' => 'required|max:150',
-                        'date_reposition' => 'required',
+                        'date_reposition' => 'required|after:date_suspended',
                         'from' => 'required',
-                        'to' => 'required',
+                        'to' => 'required|after:from',
                     ];
                 }
             default:
@@ -81,11 +81,11 @@ class ClassroomRequest extends FormRequest
         return [
             'user' => 'docente/auxiliar',
             'asignature' => 'materia',
-            'date_suspended' => 'fecha suspendida',
-            'date_reposition' => 'fecha a reponer',
+            'date_suspended' => 'fecha de clase suspendida',
+            'date_reposition' => 'fecha de clase a reponer',
             'reason' => 'justificacion',
-            'from' => 'De',
-            'to' => 'A',
+            'from' => 'Desde',
+            'to' => 'Hasta',
         ];
     }
 }
