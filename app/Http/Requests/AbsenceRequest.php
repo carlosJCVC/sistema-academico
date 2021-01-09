@@ -34,7 +34,7 @@ class AbsenceRequest extends FormRequest
                         'date_absence' => 'required',
                         'reason' => 'required|max:150',
                         'from' => 'required',
-                        'to' => 'required',
+                        'to' => 'required|after:from',
                     ];
                 }
             case 'PUT':
@@ -44,7 +44,7 @@ class AbsenceRequest extends FormRequest
                         'date_absence' => 'required',
                         'reason' => 'required|max:150',
                         'from' => 'required',
-                        'to' => 'required',
+                        'to' => 'required|after:from',
                     ];
                 }
             default:
@@ -64,6 +64,7 @@ class AbsenceRequest extends FormRequest
             'reason.required' => 'El campo :attribute es obligatorio.',
             'from.required' => 'El campo :attribute es obligatorio.',
             'to.required' => 'El campo :attribute es obligatorio.',
+            'to.after' => 'El campo :attribute debe ser posterior al campo Desde.',
             'reason.max' => 'El campo :attribute no debe ser mayor a 150 caracteres.',
             'user.numeric' => 'El campo :attribute debe ser un usuario valido.',
         ];
@@ -75,8 +76,8 @@ class AbsenceRequest extends FormRequest
             'user' => 'docente/auxiliar',
             'date_absence' => 'fecha de ausencia',
             'reason' => 'motivo/justificacion',
-            'from' => 'De',
-            'to' => 'A',
+            'from' => 'Desde',
+            'to' => 'Hasta',
         ];
     }
 }

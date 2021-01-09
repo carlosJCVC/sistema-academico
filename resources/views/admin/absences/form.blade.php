@@ -44,7 +44,7 @@
 
 <div class="form-row">
     <div class="col-md-6 mb-3">
-        <label class="col-form-label" for="from">De : </label>
+        <label class="col-form-label" for="from">Desde : </label>
         <div class="input-group">
             <span class="input-group-append">
                 <button class="btn btn-primary" type="button">TIME</button>
@@ -61,7 +61,7 @@
         </div>
     </div>
     <div class="col-md-6 mb-3">
-        <label class="col-form-label" for="to">A: </label>
+        <label class="col-form-label" for="to">Hasta: </label>
         <div class="input-group">
             <span class="input-group-append">
                 <button class="btn btn-primary" type="button">TIME</button>
