@@ -142,7 +142,7 @@
                             @if(!Auth::check())
                                 <li><a href="{{ url('/login') }}">Login</a></li>
                             @else
-                                <li><a href="{{ route('admin.dashboard') }}">/</a></li>
+                                <li><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
                             @endif
                             {{-- <li><a href="{{ url('/register') }}">Registrarse</a></li> --}}
                         </ul>
@@ -287,14 +287,37 @@
                             <ul>
                                 <li><a href="#"><i class="fa fa-google-plus fa-lg"></i></a></li>
                                 <li><a href="#"><i class="fa fa-twitter fa-lg"></i></a></li>
-                                <li><a href="#"><i class="fa fa-facebook fa-lg"></i></a></li>
-                                <li><a href="#"><i class="fa fa-pinterest fa-lg"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin fa-lg"></i></a></li>
+                                <li><a href="https://es-la.facebook.com/umss.cbba.3/"><i class="fa fa-facebook fa-lg"></i></a></li>
+                                <li>
+                                    <a href="http://fcyt.umss.edu.bo/">
+                                        <img src="{{ asset('assets/images/logo-fcyt.png') }}" alt="..." class="img-responsive">
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                         <p class="rights">
                             2021 <span>UMSS</span> Developed by <a href="#"><span>digitaldevelopment@mail.com</span></a>
                         </p>
+                    </div>
+                    <div class="col-md-12 bg-dark">
+                        <div class="rights">
+                            <ul>
+                                <li>
+                                    <a href="http://www.umss.edu.bo/"><b>UMSS</b></a>|
+                                    <a href="http://websis.umss.edu.bo/"><b>WEBSIS</b></a>|
+                                    <a href="http://www.fcyt.umss.edu.bo/"><b>FCyT</b></a>|
+                                    <a href="http://www.cs.umss.edu.bo/"><b>CS UMSS</b></a>|
+                                    <a href="https://www.facebook.com/memiumss"><b>MEMI</b></a>|
+                                    <a href="http://enlinea.umss.edu.bo/"><b>Plataformas Virtuales</b></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="rights">
+                            <b>Contacto:</b><br>
+                            <a href="mailto:dir.inf@umss.edu.bo">Direccion de carrera de Informatica - correo</a><br>
+                            <a href="mailto:direccion.sistemas@fcyt.umss.edu.bo">Direccion de carrea de Sistemas - correo</a><br> 
+                            <b>teléfono:</b><span> (591)-(4)233719<br>
+                        </div>
                     </div>
                 </div>
             </div>
