@@ -32,8 +32,8 @@ class CreateAreasTable extends Migration
 
             $table->foreign('academic_id')
                 ->references('id')
-                ->on('academics')
-                ->onDelete('cascade');
+                ->on('academics');
+            // ->onDelete('cascade');
         });
 
         Schema::create('authorities', function (Blueprint $table) {
@@ -47,8 +47,8 @@ class CreateAreasTable extends Migration
 
             $table->foreign('area_id')
                 ->references('id')
-                ->on('areas')
-                ->onDelete('cascade');
+                ->on('areas');
+            // ->onDelete('cascade');
         });
     }
 

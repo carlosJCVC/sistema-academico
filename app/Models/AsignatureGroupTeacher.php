@@ -2,13 +2,18 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
 class AsignatureGroupTeacher extends Model
 {
+    use SoftDeletes;
+
     protected $table = 'asignature_groups_teachers';
 
     protected $fillable = ['group_id', 'teacher', 'titular', 'schedule'];
+
+    protected $dates = ['deleted_at'];
 
     public function group()
     {
@@ -20,9 +25,19 @@ class AsignatureGroupTeacher extends Model
         return $this->belongsTo('App\User', 'teacher');
     }
 
+    public function schedule()
+    {
+        return $this->belongsTo('App\Models\Schedule', 'schedule');
+    }
+
     public function teacherIsTitular()
     {
         return $this->titular ? 'Horario docente' : 'Horario auxiliar';
+    }
+
+    public function getGroupModel()
+    {
+        return AsignatureGroup::findOrFail($this->group_id);
     }
 
     public function getSchedule()

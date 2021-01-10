@@ -18,7 +18,8 @@ class AreaController extends Controller
      */
     public function index(Academic $academic)
     {
-        $areas = DB::table('areas')->where('academic_id', $academic->id)->get();
+        // $areas = DB::table('areas')->where('academic_id', $academic->id)->get();
+        $areas = Area::where('academic_id', $academic->id)->get();
 
         return view('admin.areas.index', ['areas' => $areas, 'academic' => $academic]);
     }

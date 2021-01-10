@@ -37,4 +37,18 @@ class Asignature extends Model implements Auditable
     {
         return $this->hasMany('App\Models\AsignatureGroup');
     }
+
+    public static function boot()
+    {
+        parent::boot();
+        self::deleting(function ($asignature) { // before delete() method call this
+            $asignature->groups()->each(function ($group) {
+                $group->delete(); // <-- direct deletion
+            });
+        });
+        // When restore delete model
+        self::restoring(function ($asignature) {
+            $asignature->groups()->restore();
+        });
+    }
 }

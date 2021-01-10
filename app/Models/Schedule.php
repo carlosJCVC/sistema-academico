@@ -27,6 +27,26 @@ class Schedule extends Model implements Auditable
      */
     protected $dates = ['deleted_at'];
 
+    public function presentIn()
+    {
+        return $this->hasMany('App\Models\AsignatureGroupTeacher', 'schedule');
+    }
+
+    public static function boot()
+    {
+        parent::boot();
+        self::deleting(function ($schedule) { // before delete() method call this
+            $schedule->presentIn()->each(function ($recordPresent) {
+                // cada recordPresent es una instancia de AsignatureGroupTeacher, tonces obtenemos su grupo de materia y la eliminamos
+                $recordPresent->getGroupModel()->delete();
+            });
+        });
+        // When restore delete model
+        // self::restoring(function ($group) {
+        //     $group->teachers()->restore();
+        // });
+    }
+
     /**
      * Get the schedule day.
      *

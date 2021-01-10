@@ -39,6 +39,36 @@ class User extends Authenticatable implements Auditable
 
     protected $dates = ['deleted_at'];
 
+    public function presentIn()
+    {
+        // El modelo User esta presente en el sgte modelo
+        return $this->hasMany('App\Models\AsignatureGroupTeacher', 'teacher');
+    }
+
+    // public static function boot()
+    // {
+    // parent::boot();
+    // self::deleting(function ($user) { // before delete() method call this
+    //     $user->presentIn()->each(function ($recordPresent) {
+    //         $recordPresent->getGroupModel()->delete();
+    //     });
+    // });
+    // When restore delete model
+    // self::restoring(function ($user) {
+    //     $user->groups()->restore();
+    // });
+    // }
+
+    protected static function boot()
+    {
+        parent::boot();
+        static::deleting(function ($user) {
+            $user->presentIn()->each(function ($recordPresent) {
+                $recordPresent->getGroupModel()->delete();
+            });
+        });
+    }
+
     /**
      * The announcements that belong to the user.
      */

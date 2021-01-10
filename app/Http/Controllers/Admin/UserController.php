@@ -119,10 +119,11 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        User::destroy($id);
+        $user = User::find($id);
+        $user->delete();
 
-        Session::flash('flash_message3', 'Usuario  ' . $id . ' Eliminado!');
+        // Session::flash('flash_message3', 'Usuario  ' . $id . ' Eliminado!');
 
-        return redirect(route('admin.users.index'))->with(['message' => 'Usuario eliminado exitosamente!', 'alert-type' => 'info']);
+        return redirect()->route('admin.users.index')->with(['message' => 'Usuario eliminado exitosamente!', 'alert-type' => 'info']);
     }
 }

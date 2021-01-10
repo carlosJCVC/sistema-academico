@@ -27,6 +27,20 @@ class AsignatureGroup extends Model implements Auditable
         return $this->belongsTo('App\Models\Asignature');
     }
 
+    public static function boot()
+    {
+        parent::boot();
+        self::deleting(function ($group) { // before delete() method call this
+            $group->teachers()->each(function ($teacher) {
+                $teacher->delete();
+            });
+        });
+        // When restore delete model
+        self::restoring(function ($group) {
+            $group->teachers()->restore();
+        });
+    }
+
     public function getTitular()
     {
         $docente = $this->teachers()->where('titular', true)->first();

@@ -17,7 +17,8 @@ class AcademicController extends Controller
      */
     public function index()
     {
-        $academics = DB::table('academics')->get();
+        // $academics = DB::table('academics')->get();
+        $academics = Academic::all();
 
         return view('admin.academics.index', ['academics' => $academics]);
     }
@@ -43,7 +44,7 @@ class AcademicController extends Controller
     public function store(AcademicRequest $request)
     {
         $input = $request->all();
-        
+
         if ($request->status == 'on') {
             $input['status'] = true;
         }
@@ -51,7 +52,7 @@ class AcademicController extends Controller
         $academic = new Academic($input);
         $academic->save();
 
-        return redirect(route('admin.academics.index'))->with([ 'message' => 'Unidad academica creado exitosamente!', 'alert-type' => 'success' ]);
+        return redirect(route('admin.academics.index'))->with(['message' => 'Unidad academica creado exitosamente!', 'alert-type' => 'success']);
     }
 
     /**
@@ -86,7 +87,7 @@ class AcademicController extends Controller
 
         $academic->update($input);
 
-        return redirect(route('admin.academics.index'))->with([ 'message' => 'Unidad academica actualizado exitosamente!', 'alert-type' => 'success' ]);
+        return redirect(route('admin.academics.index'))->with(['message' => 'Unidad academica actualizado exitosamente!', 'alert-type' => 'success']);
     }
 
     /**
