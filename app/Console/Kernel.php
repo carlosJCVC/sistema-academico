@@ -2,6 +2,9 @@
 
 namespace App\Console;
 
+use App\Console\Commands\CreateDatabase;
+use App\Console\Commands\DropDatabase;
+use App\Console\Commands\ImportDatabase;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -13,7 +16,9 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        DropDatabase::class,
+        CreateDatabase::class,
+        ImportDatabase::class
     ];
 
     /**

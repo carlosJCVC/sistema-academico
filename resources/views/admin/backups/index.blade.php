@@ -30,6 +30,9 @@ Copias Seguridad
                         <span class="ladda-label text-muted"><i class="icon-plus"></i> Crear nuevo backup</span>
                     </button>
                     @endcan
+                    <a class="ladda-button btn" href="{{ route('admin.backup.restart') }}">
+                        <i class="icon-magic-wand"></i>&nbsp;restaurar
+                    </a>
                 </div>
             </div>
             

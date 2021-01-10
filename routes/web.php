@@ -943,6 +943,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.', '
         Route::put('backup/create', 'BackupController@create')->name('backup.backups.new');
         Route::get('backup/download/{file_name?}', 'BackupController@download');
         Route::delete('backup/delete/{file_name?}', 'BackupController@delete')->where('file_name', '(.*)');
+
+        Route::get('backup/restart', 'BackupController@restartForm')->name('backup.restart');
+        Route::post('backup/restart', 'BackupController@restartDatabase')->name('backup.restart.now');
+
+
+        Route::get('backup/asgardiano', 'BackupController@asgardiano')->name('backup.restart.asgardiano');
     });
 
     Route::group([

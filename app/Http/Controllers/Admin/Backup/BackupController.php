@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 use League\Flysystem\Adapter\Local;
 
 // https://gist.github.com/kikoseijo/d4ec87a121cba7bcb6231bfa046be291
@@ -109,5 +110,59 @@ class BackupController extends Controller
         } else {
             abort(404, 'La copia de seguridad no existe.');
         }
+    }
+
+    public function restartForm()
+    {
+        return view('admin.backups.restartform');
+    }
+
+    public function restartDatabase(Request $request)
+    {
+        $this->validate($request, [
+            'file' => 'required|file|mimetypes:text/plain',
+        ]);
+
+        $filename  = $request->file->getClientOriginalName();
+        $extension_file = $request->file->getClientOriginalExtension();
+        $file_path = $request->file('file')->store('restart', 'public');
+
+        // https://stackoverflow.com/questions/28964412/how-to-get-file-url-using-storage-facade-in-laravel-5
+        // $content_file = Storage::disk('public')->get($file_path);
+        $path = Storage::disk('public')->path($file_path);
+
+        try {
+            ini_set('max_execution_time', 300);
+            ini_set('memory_limit', '-1');
+            // artisan call drop database
+            Artisan::call('tis:drop');
+            $output = Artisan::output();
+            session()->flash('command', $output);
+            // artisan call create database
+            Artisan::call('tis:create');
+            $output = Artisan::output();
+            session()->flash('command', $output);
+
+            // importar la base de datos
+            Artisan::call('tis:import', ['path' => $path]);
+            $output = Artisan::output();
+            session()->flash('message', 'Base de datos exitosamente restaurado');
+
+            return redirect()->route('admin.backup.backups');
+        } catch (\Exception $e) {
+            session()->flash('message', $e->getMessage());
+            return redirect()->route('admin.backup.restart');
+        }
+    }
+
+    public function asgardiano()
+    {
+        dump('hihih');
+        // $content_file = Storage::disk('public')->get('restart/4FdHOsjIsja81PqUfcj56SdOuzyqnOAOzb6wrj4v.txt');
+        $path = Storage::disk('public')->path('restart/4FdHOsjIsja81PqUfcj56SdOuzyqnOAOzb6wrj4v.txt');
+        $url = Storage::url('restart/4FdHOsjIsja81PqUfcj56SdOuzyqnOAOzb6wrj4v.txt');
+        // dump(file_get_contents($path));
+        dump($url, $path);
+        // DB::unprepared(file_get_contents($path));
     }
 }

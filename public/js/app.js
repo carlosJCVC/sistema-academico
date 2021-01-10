@@ -38451,6 +38451,27 @@ module.exports = delete_action = function delete_action(e) {
     });
 };
 
+module.exports = restore_action = function restore_action(e) {
+    e.preventDefault();
+    console.log(e);
+    console.log(e.target.form);
+    Swal.fire({
+        title: 'Estas seguro!',
+        text: 'Estas seguro de restaurar la base de datos ?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: 'hsl(120, 50%, 50%, 1)',
+        cancelButtonColor: 'hsl(0, 50%, 50%, 1)',
+        confirmButtonText: 'Yes !!'
+    }).then(function (_ref2) {
+        var value = _ref2.value;
+
+        if (value) {
+            e.target.form.submit();
+        }
+    });
+};
+
 // window.swal_delete = (e) => {
 //     console.log('swal_delete');
 //     console.log(e)
