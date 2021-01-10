@@ -108,7 +108,7 @@ class User extends Authenticatable implements Auditable
 
     public function getFullNameAttribute()
     {
-        return ucfirst("{$this->name} {$this->last_name} {$this->lastnamemother}");
+        return ucfirst("{$this->name} {$this->lastname} {$this->lastnamemother}");
     }
 
     public function schedules()

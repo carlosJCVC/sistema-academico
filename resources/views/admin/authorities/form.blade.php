@@ -10,7 +10,7 @@
                 <option></option>
                 @foreach ($users as $user)
                     <option value="{{ $user->id }}" {{ old('user', isset($authority) ? $authority->user : '') == $user->id ? 'selected' : '' }}>
-                        {{ $user->name}}
+                        {{ $user->fullname }}
                     </option>    
                 @endforeach
             </select>

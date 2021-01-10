@@ -26,21 +26,21 @@ class AreaRequest extends FormRequest
         switch ($this->method()) {
             case 'GET':
             case 'DELETE': {
-                return [];
-            }
+                    return [];
+                }
             case 'POST': {
-                return [
-                    'name' => 'required|max:100',
-                    'description' => 'required|max:500',
-                ];
-            }
+                    return [
+                        'name' => 'required|max:100|unique:areas',
+                        'description' => 'required|max:500',
+                    ];
+                }
             case 'PUT':
             case 'PATCH': {
-                return [
-                    'name' => 'required|max:100',
-                    'description' => 'required|max:500',
-                ];
-            }
+                    return [
+                        'name' => 'required|max:100|unique:areas',
+                        'description' => 'required|max:500',
+                    ];
+                }
             default:
                 break;
         }
@@ -68,5 +68,4 @@ class AreaRequest extends FormRequest
             'description' => 'Descripcion',
         ];
     }
-
 }
