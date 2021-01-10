@@ -933,3 +933,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.', '
         Route::delete('backup/delete/{file_name?}', 'BackupController@delete')->where('file_name', '(.*)');
     });
 });
+
+Route::get('isma', [
+    'as' => 'isma',
+    'uses' => 'PostulantController@print',
+]);

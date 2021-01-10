@@ -22,7 +22,7 @@ class PostulantController extends Controller
     {
         $items = DB::table('items')->get();
 
-        return View('postulant_register', [ 'announcement' => $announcement, 'items' => $items ]);
+        return View('postulant_register', ['announcement' => $announcement, 'items' => $items]);
     }
 
     /**
@@ -42,8 +42,8 @@ class PostulantController extends Controller
             'user_id' => $postulant->id,
             'announcement_id' => $announcement->id,
         ]);
-        
-        return redirect(route('postulants.show', [ 'announcement' => $announcement, 'postulant' => $postulant ]));
+
+        return redirect(route('postulants.show', ['announcement' => $announcement, 'postulant' => $postulant]));
         //->with([ 'message' => 'User creado exitosamente!', 'alert-type' => 'success' ]);
     }
 
@@ -57,7 +57,7 @@ class PostulantController extends Controller
     {
         $items = DB::table('items')->get();
 
-        return View('postulants.edit', [ 'announcement' => $announcement, 'postulant' => $postulant, 'items' => $items ]);
+        return View('postulants.edit', ['announcement' => $announcement, 'postulant' => $postulant, 'items' => $items]);
     }
 
     /**
@@ -70,8 +70,8 @@ class PostulantController extends Controller
     {
         $input = $request->all();
         $postulant->update($input);
-        
-        return redirect(route('postulants.show', [ 'announcement' => $announcement, 'postulant' => $postulant ]));
+
+        return redirect(route('postulants.show', ['announcement' => $announcement, 'postulant' => $postulant]));
         //->with([ 'message' => 'User creado exitosamente!', 'alert-type' => 'success' ]);
     }
 
@@ -85,29 +85,32 @@ class PostulantController extends Controller
     {
         $item = Item::find($postulant->item_id);
 
-        return View('postulants.show', [ 'announcement' => $announcement, 'postulant' => $postulant, 'item' => $item ]);
+        return View('postulants.show', ['announcement' => $announcement, 'postulant' => $postulant, 'item' => $item]);
     }
 
     public function print(Postulant $postulant)
     {
-        $item = Item::find($postulant->item_id);
+        // $item = Item::find($postulant->item_id);
+        $users = \App\User::all();
+        $users->load('roles');
 
-        $data = [
-            'name' => $postulant->name,
-            'lastname' => $postulant->lastname,
-            'ci' => $postulant->ci,
-            'cod_sis' => $postulant->cod_sis,
-            'email' => $postulant->email,
-            'phone' => $postulant->phone,
-            'gender' => $postulant->gender,
-            'address' => $postulant->address,
-            'auxiliar_name' => $postulant->auxiliar_name,
-            'nro_docs' => $postulant->nro_docs,
-            'nro_certificates' => $postulant->nro_certificates,
-            'item_name' => $item->name,
-            'item_code' => $item->code,
-        ];
-        
+        $title = "Reporte lista de Usuarios";
+        // $data = [
+        //     'name' => $postulant->name,
+        //     'lastname' => $postulant->lastname,
+        //     'ci' => $postulant->ci,
+        //     'cod_sis' => $postulant->cod_sis,
+        //     'email' => $postulant->email,
+        //     'phone' => $postulant->phone,
+        //     'gender' => $postulant->gender,
+        //     'address' => $postulant->address,
+        //     'auxiliar_name' => $postulant->auxiliar_name,
+        //     'nro_docs' => $postulant->nro_docs,
+        //     'nro_certificates' => $postulant->nro_certificates,
+        //     'item_name' => $item->name,
+        //     'item_code' => $item->code,
+        // ];
+
 
         /*
         $data = [
@@ -125,9 +128,9 @@ class PostulantController extends Controller
         ];
         */
 
-        $pdf = PDF::loadView('pdf.postulant', $data);
+        // $pdf = PDF::loadView('pdf.postulant', $item);
+        $pdf = PDF::loadView('admin.printers.layout', compact('users', 'title'));
 
         return $pdf->stream('archivo.pdf');
     }
-
 }
