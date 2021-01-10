@@ -66,9 +66,9 @@ Clases de reposicion
                 <tfoot>
                     <tr>
                         <td colspan="7">
-                            <button class="btn bg-dark text-white" type="button">
+                            <a class="btn bg-dark text-white" href="{{ route('admin.printer.classrooms') }}">
                                 <i class="fa fa-file-pdf-o" aria-hidden="true"></i>&nbsp;Descargar
-                            </button>
+                            </a>
                         </td>
                     </tr>
                 </tfoot>

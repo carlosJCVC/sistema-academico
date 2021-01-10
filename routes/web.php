@@ -944,9 +944,19 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.', '
         Route::get('backup/download/{file_name?}', 'BackupController@download');
         Route::delete('backup/delete/{file_name?}', 'BackupController@delete')->where('file_name', '(.*)');
     });
+
+    Route::group([
+        'namespace'  => 'PDF'
+    ], function () {
+        Route::get('printer/users', 'PrintController@users')->name('printer.users');
+        Route::get('printer/week-reports', 'PrintController@weekReports')->name('printer.week-reports');
+        Route::get('printer/planillas', 'PrintController@planillas')->name('printer.planillas');
+        Route::get('printer/classrooms', 'PrintController@classrooms')->name('printer.classrooms');
+        Route::get('printer/absences', 'PrintController@absences')->name('printer.absences');
+    });
 });
 
-Route::get('isma', [
-    'as' => 'isma',
+Route::get('asgardiano', [
+    'as' => 'asgardiano',
     'uses' => 'PostulantController@print',
 ]);

@@ -9,6 +9,7 @@ use App\Models\Asignature;
 use App\Models\WeekReport;
 use App\User;
 use Carbon\Carbon;
+use stdClass;
 
 class PlanillaController extends Controller
 {
@@ -46,11 +47,20 @@ class PlanillaController extends Controller
 
         $teacher = User::findOrFail($user);
 
+        // For print report in PDF
+        $metadata = new stdClass();
+        $metadata->user = $user;
+        $metadata->year = $year;
+        $metadata->number = $number;
+        $metadata->from = $request['from'];
+        $metadata->to = $request['to'];
+
         return view('admin.reports.planillas.show', [
             'reports' => $reports,
             'teacher' => $teacher,
             'gestion' => "{$number} {$year}",
-            'rango' => "DE: {$from->format('d/m/y')} A: {$to->format('d/m/y')}"
+            'rango' => "DE: {$from->format('d/m/y')} A: {$to->format('d/m/y')}",
+            'metadata' => $metadata
         ]);
     }
 }

@@ -63,9 +63,9 @@ PLANILLA - Asistencia y Avance
                 <tfoot>
                     <tr>
                         <td colspan="7">
-                            <button class="btn bg-dark text-white" type="button">
+                            <a class="btn bg-dark text-white" href="{{ route('admin.printer.planillas', ['user' => $metadata->user,'year' => $metadata->year,'number' => $metadata->number,'to' => $metadata->to,'from' => $metadata->from]) }}">
                                 <i class="fa fa-file-pdf-o" aria-hidden="true"></i>&nbsp;Descargar
-                            </button>
+                            </a>
                         </td>
                     </tr>
                 </tfoot>
@@ -77,7 +77,8 @@ PLANILLA - Asistencia y Avance
         <div class="card-footer">
             <div class="row">
                 <div class="col">
-                    <a class="btn btn-secondary" href="{{ route('admin.asistencia-avance.planillas') }}">
+                    <a class="btn btn-secondary"
+                    href="{{ route('admin.asistencia-avance.planillas') }}">
                         <i class="icon-arrow-left"></i>&nbsp;Volver
                     </a>
                 </div>    
