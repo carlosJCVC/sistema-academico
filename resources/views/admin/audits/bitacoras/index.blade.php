@@ -22,6 +22,7 @@ Bitacoras
                     <th class="text-center">Fecha</th>
                     <th class="text-center">Hora</th>
                     <th class="text-center">Direccion IP</th>
+                    <th>&nbsp;</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -35,6 +36,17 @@ Bitacoras
                         <td>{{ $bitacora->formatDate() }}</td>
                         <td>{{ $bitacora->formatTime() }}</td>
                         <td>{{ $bitacora->ip_address }}</td>
+                        <td>
+                            @if($bitacora->isEvent('deleted') || $bitacora->isEvent('updated'))
+                                <form action="{{ route('admin.bitacoras.restore', $bitacora->id) }}" method="POST">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="action" value="{{ $bitacora->event }}">
+                                    <button title="RESTAURAR" class="btn btn-secondary btn-sm">
+                                        <i class="icon-action-undo penone"></i>
+                                    </button>
+                                </form>
+                            @endif
+                        </td>
                 @endforeach
                 </tbody>
             </table>

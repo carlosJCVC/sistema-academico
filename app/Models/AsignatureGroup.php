@@ -4,14 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class AsignatureGroup extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
+    use SoftDeletes;
 
     protected $table = 'asignature_groups';
 
     protected $fillable = ['group', 'asignature_id'];
+
+    protected $dates = ['deleted_at'];
 
     public function teachers()
     {

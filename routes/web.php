@@ -920,6 +920,18 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.', '
             'as' => 'bitacoras.histories',
             'uses' => 'BitacoraController@usersHistorylist',
         ]);
+        Route::post('audits/restore/{id}', [
+            'as' => 'bitacoras.restore',
+            'uses' => 'BitacoraController@restore',
+        ]);
+        Route::get('audits/restore/{id}/updated-resource', [
+            'as' => 'bitacoras.show.model',
+            'uses' => 'BitacoraController@showResourceUpdated',
+        ]);
+        Route::post('audits/restore/{id}/transition', [
+            'as' => 'bitacoras.transition',
+            'uses' => 'BitacoraController@transitionToCurrentModel',
+        ]);
     });
 
     Route::group([

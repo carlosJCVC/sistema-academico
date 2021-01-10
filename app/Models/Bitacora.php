@@ -21,6 +21,11 @@ class Bitacora extends Audit
         // });
     }
 
+    public function isEvent(String $eventCheck)
+    {
+        return $this->event == $eventCheck;
+    }
+
     public function getRoleUserFiredEvent()
     {
         $user = $this->user;
@@ -48,10 +53,13 @@ class Bitacora extends Audit
                     return '<span class="badge badge-success">REGISTRO CREADO</span>';
                 }
             case 'updated': {
-                    return '<span class="badge badge-info">REGISTRO ACTUALIZADO</span>';
+                    return '<span class="badge badge-warning">REGISTRO ACTUALIZADO</span>';
                 }
             case 'deleted': {
                     return '<span class="badge badge-danger">REGISTRO ELIMINADO</span>';
+                }
+            case 'restored': {
+                    return '<span class="badge badge-primary">REGISTRO RESTAURADO DE ELIMINACION</span>';
                 }
             default:
                 return strtoupper($event);
