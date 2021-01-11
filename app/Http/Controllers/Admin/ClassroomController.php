@@ -13,7 +13,8 @@ class ClassroomController extends Controller
 {
     public function index()
     {
-        $classes = Classroom::all();
+        // $classes = Classroom::all();
+        $classes = Classroom::allRecords();
         return view('admin.classroom.index', [
             'classes' => $classes
         ]);

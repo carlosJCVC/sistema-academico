@@ -85,4 +85,23 @@ class Classroom extends Model implements Auditable
         $to = $this->to;
         return "{$from}-{$to}";
     }
+
+    public static function allRecords()
+    {
+        $classrooms =  self::all();
+        $filtered = $classrooms->filter(function ($report, $key) {
+            return $report->existsUser() && $report->existsAsignature();
+        });
+        return $filtered;
+    }
+
+    public function existsAsignature()
+    {
+        return Asignature::where('id', '=', $this->asignature)->exists();
+    }
+
+    public function existsUser()
+    {
+        return User::where('id', '=', $this->user)->exists();
+    }
 }

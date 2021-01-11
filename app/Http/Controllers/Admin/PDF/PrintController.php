@@ -25,7 +25,8 @@ class PrintController extends Controller
 
     public function weekReports()
     {
-        $reports = WeekReport::all();
+        // $reports = WeekReport::all();
+        $reports = WeekReport::allRecords();
         $title = "Reporte lista de Avances";
         $pdf = PDF::loadView('admin.printers.week-reports', compact('reports', 'title'));
         return $pdf->stream('week_reports.pdf');
@@ -62,7 +63,8 @@ class PrintController extends Controller
     {
         $title = "Reporte Clases de reposicion";
 
-        $classes = Classroom::all();
+        // $classes = Classroom::all();
+        $classes = Classroom::allRecords();
 
         $pdf = PDF::loadView('admin.printers.classrooms', [
             'title' => $title,
@@ -74,7 +76,8 @@ class PrintController extends Controller
     public function absences()
     {
         $title = "Reporte Justificaciones de ausencia";
-        $absences = Absence::all();
+        // $absences = Absence::all();
+        $absences = Absence::allRecords();
         $pdf = PDF::loadView('admin.printers.absences', [
             'title' => $title,
             'absences' => $absences

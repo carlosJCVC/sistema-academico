@@ -88,4 +88,28 @@ class WeekReport extends Model implements Auditable
         // Storage::delete($this->file_path);
         Storage::disk('public')->delete($this->file_path);
     }
+
+    public static function allRecords()
+    {
+        $week_reports =  self::all();
+        $filtered = $week_reports->filter(function ($report, $key) {
+            return $report->existsUser() && $report->existsAsignature() && $report->existsAsignatureGroup();
+        });
+        return $filtered;
+    }
+
+    public function existsAsignature()
+    {
+        return Asignature::where('id', '=', $this->asignature)->exists();
+    }
+
+    public function existsAsignatureGroup()
+    {
+        return AsignatureGroup::where('id', '=', $this->group)->exists();
+    }
+
+    public function existsUser()
+    {
+        return User::where('id', '=', $this->user)->exists();
+    }
 }

@@ -57,4 +57,18 @@ class Absence extends Model implements Auditable
         $to = $this->to;
         return "{$from}-{$to}";
     }
+
+    public static function allRecords()
+    {
+        $absences =  self::all();
+        $filtered = $absences->filter(function ($report, $key) {
+            return $report->existsUser();
+        });
+        return $filtered;
+    }
+
+    public function existsUser()
+    {
+        return User::where('id', '=', $this->user)->exists();
+    }
 }

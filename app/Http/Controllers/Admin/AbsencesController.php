@@ -12,7 +12,9 @@ class AbsencesController extends Controller
 {
     public function index()
     {
-        $absences = Absence::all();
+        // $absences = Absence::all();
+        $absences = Absence::allRecords();
+        dd($absences);
         return view('admin.absences.index', [
             'absences' => $absences
         ]);

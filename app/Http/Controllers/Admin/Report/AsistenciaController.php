@@ -14,7 +14,8 @@ class AsistenciaController extends Controller
 {
     public function index()
     {
-        $reports = WeekReport::all();
+        // $reports = WeekReport::all();
+        $reports = WeekReport::allRecords();
         return view('admin.reports.asistencia_avance.index', [
             'reports' => $reports
         ]);
