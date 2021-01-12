@@ -30,8 +30,10 @@ class ScheduleController extends Controller
     public function create()
     {
         $option_schedules = config('schedule-asignature.hours');
+        $days = config('schedule-asignature.days');
         return view('admin.schedules.create', [
-            'schedules' => $option_schedules
+            'schedules' => $option_schedules,
+            'days' => $days
         ]);
     }
 
@@ -60,7 +62,12 @@ class ScheduleController extends Controller
     public function edit(Schedule $schedule)
     {
         $option_schedules = config('schedule-asignature.hours');
-        return view('admin.schedules.edit', ['schedule' => $schedule, 'schedules' => $option_schedules]);
+        $days = config('schedule-asignature.days');
+        return view('admin.schedules.edit', [
+            'schedule' => $schedule,
+            'schedules' => $option_schedules,
+            'days' => $days
+        ]);
     }
 
     /**

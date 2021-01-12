@@ -13,5 +13,14 @@ return [
         '18:45',
         '20:15',
         '21:45'
+    ],
+    'days' => [
+        'LU' => 'LUNES',
+        'MA' => 'MARTES',
+        'MI' => 'MIERCOLES',
+        'JU' => 'JUEVES',
+        'VI' => 'VIERNES',
+        'SA' => 'SABADO',
+        'DO' => 'DOMINGO',
     ]
 ];

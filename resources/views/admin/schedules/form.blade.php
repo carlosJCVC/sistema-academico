@@ -57,13 +57,18 @@
                 <button class="btn btn-primary" type="button">D</button>
             </span>
             <select class="form-control {{ $errors->has('day') ? 'is-invalid' : '' }}" name="day" id="day">
-                <option value="LU" {{ (isset($schedule) && $schedule->day == 'LUNES')? 'selected' : '' }}>Lunes</option>
+                @foreach ($days as $value => $day)
+                    <option value="{{ $value }}" {{ old('day', isset($schedule) ? $schedule->day : '') == $value ? 'selected' : '' }}>
+                        {{ $day }}
+                    </option>    
+                @endforeach
+                {{-- <option value="LU" {{ (isset($schedule) && $schedule->day == 'LUNES')? 'selected' : '' }}>Lunes</option>
                 <option value="MA" {{ (isset($schedule) && $schedule->day == 'MARTES')? 'selected' : '' }}>Martes</option>
                 <option value="MI" {{ (isset($schedule) && $schedule->day == 'MIERCOLES')? 'selected' : '' }}>Miercoles</option>
                 <option value="JU" {{ (isset($schedule) && $schedule->day == 'JUEVES')? 'selected' : '' }}>Jueves</option>
                 <option value="VI" {{ (isset($schedule) && $schedule->day == 'VIERNES')? 'selected' : '' }}>Viernes</option>
                 <option value="SA" {{ (isset($schedule) && $schedule->day == 'SABADO')? 'selected' : '' }}>Sabado</option>
-                <option value="DO" {{ (isset($schedule) && $schedule->day == 'DOMINGO')? 'selected' : '' }}>Domingo</option>
+                <option value="DO" {{ (isset($schedule) && $schedule->day == 'DOMINGO')? 'selected' : '' }}>Domingo</option> --}}
             </select>
         </div>
 
