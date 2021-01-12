@@ -42,6 +42,7 @@ class ScheduleRequest extends FormRequest
                                 $query->where([
                                     ['from', '=', $from],
                                     ['to', '=', $to],
+                                    // ['deleted_at', '=', null],
                                 ]);
                             })
                         ],

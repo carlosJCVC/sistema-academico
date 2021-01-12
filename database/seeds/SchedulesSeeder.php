@@ -20,10 +20,10 @@ class SchedulesSeeder extends Seeder
             '12:45',
             '14:15',
             '15:45',
-            '17:15',
-            '18:45',
-            '20:15',
-            '21:45'
+            // '17:15',
+            // '18:45',
+            // '20:15',
+            // '21:45'
         ];
 
         $days = [
@@ -32,8 +32,8 @@ class SchedulesSeeder extends Seeder
             'MI',
             'JU',
             'VI',
-            'SA',
-            'DO'
+            // 'SA',
+            // 'DO'
         ];
 
         $schedules = [];

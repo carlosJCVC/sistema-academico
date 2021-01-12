@@ -14,7 +14,6 @@ class AbsencesController extends Controller
     {
         // $absences = Absence::all();
         $absences = Absence::allRecords();
-        dd($absences);
         return view('admin.absences.index', [
             'absences' => $absences
         ]);
