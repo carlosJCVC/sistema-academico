@@ -9,6 +9,28 @@
            <li class="nav-title">
                 {{ Auth::user()->name }}
             </li> 
+
+            @role('Administrador')
+            <li class="nav-item nav-dropdown">
+                <a class="nav-link nav-dropdown-toggle" href="#">
+                    <i class="icon-drawer"></i>
+                    Mensajes 
+                    @if ($count = auth()->user()->unreadNotifications()->count())
+                        <span class="badge badge-danger" style="float: none">{{ $count }}</span>
+                    @endif
+                </a>
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('messages.show', ['read' => true]) }}"><i class="icon-envelope-open"></i>Leidos</a>
+                    </li>
+                    <li class="nav-item">
+                        {{-- <a class="nav-link" href="{{ route('messages.show', ['read' => false]) }}"><i class="icon-uncheck"></i>No Leidos</a> --}}
+                        <a class="nav-link" href="{{ route('messages.show', ['read' => false]) }}"><i class="fa fa-envelope-o" aria-hidden="true"></i>No Leidos</a>
+                    </li>
+                </ul>
+            </li>
+            @endrole
+
             @if(Auth::user()->checkPermissions('or', ['list users', 'list roles', 'create users']))
             <li class="nav-item nav-dropdown">
                 <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-people"></i> Usuarios</a>

@@ -257,28 +257,32 @@
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <form role="form">
+                        <form role="form" method="POST" action="{{ route('messages.store') }}">
+                            {{ csrf_field() }}
                             <div class="col-md-6">
                                 <div class="row">
                                     <div class="col-md-6 spirat">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Tu nombre">
+                                            <input type="text" name="name" class="form-control" placeholder="Tu nombre" required>
                                         </div>
+                                        {!! $errors->first('name', "<span class=rights>:message</span>") !!}
                                     </div>
                                     <div class="col-md-6 spirat">
                                         <div class="form-group">
-                                            <input type="email" class="form-control" placeholder="Tu correo">
+                                            <input type="email" name="email" class="form-control" placeholder="Tu correo" required>
                                         </div>
+                                        {!! $errors->first('email', "<span class=rights>:message</span>") !!}
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Tu mensaje">
+                                    <input type="text" name="body" class="form-control" placeholder="Tu mensaje" required>
                                     <span class="input-group-btn">
-                                        <button class="btn" type="button">Enviar tu mensaje</button>
+                                        <button class="btn" style="outline: none;">Enviar tu mensaje</button>
                                     </span>
                                 </div>
+                                {!! $errors->first('body', "<span class=rights>:message</span>") !!}
                             </div>
                         </form>
                     </div>

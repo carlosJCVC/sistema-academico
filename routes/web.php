@@ -9,6 +9,10 @@ Route::get('/', [
     'uses' => 'HomeController@index'
 ]);
 
+Route::post('/messages', 'Admin\MessageController@store')->name('messages.store');
+Route::get('/messages', 'Admin\MessageController@show')->name('messages.show');
+Route::put('/messages/{id}', 'Admin\MessageController@markAsRead')->name('message.markAsRead');
+
 /*
 Route::get('/', function() {
     return View('auth.login');
