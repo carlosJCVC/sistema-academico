@@ -35,7 +35,7 @@
             <div class="slider-container" id="slider">
                 <div class="container">
                     <div class="row mh-container">
-                        <h1><span>Bienvenidos </span></h1>
+                        <h1 style="margin-top: 150px"><span>Bienvenidos</span></h1>
                         <h3>SISTEMA DE REGISTRO DE ASISTENCIA Y AVANCE DE MATERIAS</h3>
                         {{--
                         <div class="col-md-4 col-md-push-4">
